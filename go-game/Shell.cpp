@@ -7,13 +7,38 @@ get_mem(int nargs, const char** argv){
   if(nargs < 2)
     return -1;
 
-  int addr = String(argv[1]).toInt();
-  int val = *((int*)addr);
+  long addr = strtol(argv[1], NULL, 16);
+  char typ = nargs > 2 ? argv[2][0] : 'i';
 
-  Serial.print("Addr ");
+  Serial.print("Addr 0x");
   Serial.print(addr, HEX);
   Serial.print(" = ");
-  Serial.println(val, HEX);
+
+  switch(typ){
+    case 'i':
+      Serial.print(*((int*)addr));
+      break;
+    case 'I':
+      Serial.print("0x");
+      Serial.print(*((int*)addr), HEX);
+      break;
+    case 'l':
+      Serial.print(*((long*)addr));
+      break;
+    case 'L':
+      Serial.print("0x");
+      Serial.print(*((long*)addr), HEX);
+      break;
+    case 'f':
+    case 'F':
+      Serial.print(*((float*)addr));
+      break;
+    case 'd':
+    case 'D':
+      Serial.print(*((double*)addr));
+      break;
+  }
+  Serial.println((char)tolower(typ));
 }
 
 int  
