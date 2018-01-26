@@ -1,6 +1,11 @@
 
-#include "Shell.h"
+#include "ArduGo.h"
 
+static int
+get_var(int nargs, const char** argv){
+  if(nargs < 2)
+    return -1;
+}
 
 static int
 get_mem(int nargs, const char** argv){
@@ -39,6 +44,7 @@ get_mem(int nargs, const char** argv){
       break;
   }
   Serial.println((char)tolower(typ));
+  return 0;
 }
 
 int  
@@ -64,6 +70,8 @@ Shell::exec(){
     switch(argv[0][0]){
       case 'g':
         if(!strcmp(argv[0], "get-mem"))
+          return get_mem(nargs, argv);
+        if(!strcmp(argv[0], "get-var"))
           return get_mem(nargs, argv);
       break;
     }

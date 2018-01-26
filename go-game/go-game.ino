@@ -1,7 +1,5 @@
 
-#include "Shell.h"
-
-Shell shell;
+#include "ArduGo.h"
 
 void setup() {
   Serial.begin(9600);
