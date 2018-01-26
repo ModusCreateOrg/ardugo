@@ -1,2 +1,2 @@
-# go-arduboy-game
-An implementation of a goban for the Arduboy game console.
+# ArduGo
+ArduGo is implementation of a goban for the Arduboy game console.

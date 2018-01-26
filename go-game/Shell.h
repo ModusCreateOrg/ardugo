@@ -10,8 +10,12 @@
 
 struct Shell {
 
-int exec(char* line);
-int execSerial();
+void dump();
+
+void
+Shell::loop(){
+  execSerial();
+}
 
 private: 
 
@@ -20,7 +24,9 @@ static const int NARGS = 5;
 const char *argv[NARGS];
 byte nargs;
 
-int exec();
+void exec(char* line);
+void execSerial();
+void exec();
 
 void tokenize(char* line){
 
@@ -34,6 +40,8 @@ void tokenize(char* line){
     tok = strtok(NULL, delim);
   }
 }
+
+
 
 
 };//class

@@ -1,6 +1,9 @@
 
 #include "ArduGo.h"
 #include "Shell.h"
+#include "Board.h"
+#include "Game.h"
+#include "Player.h"
 
 /*
  *  File: Shell.cpp
@@ -8,13 +11,8 @@
  *  Author: Don Anderson
  */
 
-static int
-get_var(int nargs, const char** argv){
-  if(nargs < 2)
-    return -1;
-}
 
-static int
+static void
 get_mem(int nargs, const char** argv){
   if(nargs < 2)
     return -1;
@@ -54,36 +52,60 @@ get_mem(int nargs, const char** argv){
   return 0;
 }
 
-int  
+void  
 Shell::execSerial(){
 
   if(int n = Serial.available()){
-      char *line = malloc(n+1);
-      line[Serial.readBytesUntil('\r', line, n)] = 0;
+      char line[33];
+      line[Serial.readBytesUntil('\r', line, sizeof(line)-1)] = 0;
       exec(line);
-      free(line);
   }
 }
 
-int  
+void  
 Shell::exec(char* line){
   tokenize(line);
   exec();
 }
 
-int 
+static void
+what(const char* arg0){
+  Serial.print("What: ");
+  Serial.println(arg0);
+}
+
+void 
 Shell::exec(){
   if(nargs){
     switch(argv[0][0]){
+
+      case 'd':
+        if(!strcmp(argv[0], "dump_globals"))
+          dump_globals();
+        else if(!strcmp(argv[0], "dump_board"))
+          board.dump();
+        else if(!strcmp(argv[0], "dump_game"))
+          game->dump();
+        else if(!strcmp(argv[0], "dump_player1"))
+          player1->dump();
+        else if(!strcmp(argv[0], "dump_player2"))
+          player2->dump();
+        else
+          what(argv[0]);
+        break;
+
       case 'g':
         if(!strcmp(argv[0], "get-mem"))
-          return get_mem(nargs, argv);
-        if(!strcmp(argv[0], "get-var"))
-          return get_mem(nargs, argv);
-      break;
+          get_mem(nargs, argv);
+        else
+          what(argv[0]);
+        break;
+
+      default:
+        what(argv[0]);
+        break;
     }
-    Serial.print("What: ");
-    Serial.println(argv[0]);
+
   }
 }
 
