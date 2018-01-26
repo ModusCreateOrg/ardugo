@@ -2,8 +2,6 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
 
-#include <Arduino.h>
-
 struct Shell {
 
 int exec(char* line);
@@ -33,6 +31,8 @@ void tokenize(char* line){
 
 
 };//class
+
+extern Shell shell;
 
 
 

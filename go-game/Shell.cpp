@@ -1,5 +1,6 @@
 
 #include "ArduGo.h"
+#include "Shell.h"
 
 static int
 get_var(int nargs, const char** argv){
