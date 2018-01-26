@@ -2,6 +2,12 @@
 #include "ArduGo.h"
 #include "Shell.h"
 
+/*
+ *  File: Shell.cpp
+ *  Purpose: Implementation of a rudimentary shell for debugging.
+ *  Author: Don Anderson
+ */
+
 static int
 get_var(int nargs, const char** argv){
   if(nargs < 2)

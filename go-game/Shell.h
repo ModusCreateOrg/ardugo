@@ -2,6 +2,12 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
 
+/*
+ *  File: Shell.h
+ *  Purpose: Declaration of a rudimentary shell for debugging.
+ *  Author: Don Anderson
+ */
+
 struct Shell {
 
 int exec(char* line);

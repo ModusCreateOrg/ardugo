@@ -1,6 +1,11 @@
-
 #include "ArduGo.h"
 #include "Shell.h"
+
+/*
+ *  File: go-game.ino
+ *  Purpose: Implementation of Arduino entrypoints.
+ *  Author: Don Anderson
+ */
 
 void setup() {
   Serial.begin(9600);
