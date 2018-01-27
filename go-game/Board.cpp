@@ -35,14 +35,20 @@ Board::execButtons(){
       tunes.tone(150, 100);
     }
     else{
-      placeStone(cursor_row, cursor_col, BLACK_STONE);
+      move(cursor_row, cursor_col, BLACK_STONE);
       tunes.tone(2000, 100);
-      move();
+      row_col_t next;
+      if(nextMove(WHITE_STONE, next)){
+        move(next.row, next.col, WHITE_STONE);
+        setCursor(next.row, next.col);
+      }
     }
-  }
+  } 
   
-  if (!(previousButtonState & B_BUTTON) && (currentButtonState & B_BUTTON))
+  if (!(previousButtonState & B_BUTTON) && (currentButtonState & B_BUTTON)){
     clear();
+  }
+
 };
 
 void

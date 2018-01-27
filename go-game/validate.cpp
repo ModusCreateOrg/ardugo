@@ -17,7 +17,7 @@ Board::checkValid(int row, int col, point_t color){
 }
 
 int
-Board::markValids(index_t *index){
+Board::markValids(row_col_t *index){
   int cnt = 0;
   for(int r=0; r<size; r++){
     for(int c=0; c<size; c++){

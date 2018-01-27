@@ -25,7 +25,7 @@ typedef uint8_t point_t;
 typedef uint8_t idx_t;
 struct {
   idx_t row, col;
-} typedef index_t;
+} typedef row_col_t;
 
 static const int size = 9;
 static const int size2 = size * size;
@@ -34,8 +34,9 @@ const point_t WHITE_STONE = 0x01;
 const point_t BLACK_STONE = 0x02;
 const point_t ANY_STONE   = 0x03;
 
-const point_t META_MASK   = 0x03;
-const point_t VALID_NEXT  = 0x04;
+const point_t META_MASK  = 0x03;
+const point_t VALID_NEXT = 0x04;
+const point_t CAPTURED   = 0x08;
 
 void cursorUp()    {if(cursor_row < size-1) cursor_row++; else cursor_row = 0;}
 void cursorDown()  {if(cursor_row > 0) cursor_row--; else cursor_row = size-1;}
@@ -43,6 +44,9 @@ void cursorLeft()  {if(cursor_col > 0) cursor_col--; else cursor_col = size-1;}
 void cursorRight() {if(cursor_col < size-1) cursor_col++; else cursor_col = 0;}
 
 void clearMeta();
+void clearValid();
+void clearCaptured();
+
 void checkValid(point_t color);
 
 unsigned long cursor_millis;
@@ -51,7 +55,6 @@ uint8_t buttons_prev, cursor_color;
 point_t points[size][size];
 
 void execButtons();
-void move();
 
 uint8_t getPoint(int row, int col){
   return points[row][col];
@@ -94,12 +97,24 @@ point_t *pointsEnd(){
 
 // VALIDATION
 
-int markValids(index_t *index);
+int markValids(row_col_t *index);
 int checkValid(int row, int col, point_t color);
 
 int isValid(int row, int col){
   return points[row][col] & VALID_NEXT ? 1 : 0;
 }
+
+// MOVE
+
+int nextMove(point_t color, row_col_t &row_col);
+void move(int row, int col, point_t color);
+int markCaptures(row_col_t *index);
+int checkCaptured(int row, int col, point_t color);
+
+int isCaptured(int row, int col){
+  return points[row][col] & CAPTURED ? 1 : 0;
+}
+
 
 };//Board
 
