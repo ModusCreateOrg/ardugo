@@ -13,9 +13,15 @@
 struct Game;
 struct Player;
 
+const uint8_t BLACK_STONE = 0;
+const uint8_t WHITE_STONE = 0;
+
 extern Arduboy arduboy;
 extern Game *game;
 extern Player *player1, *player2;
+
+extern uint8_t previousButtonState;
+extern uint8_t currentButtonState;
 
 void ardugo_setup();
 void dump_globals();

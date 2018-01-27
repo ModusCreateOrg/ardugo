@@ -17,27 +17,24 @@ Board::loop(){
     cursor_millis = millis();
     cursor_color = cursor_color == WHITE ? BLACK : WHITE;
   }
-
-  if(millis() > button_millis + 75){
-    button_millis = millis();
-    execButtons();
-  }
+  execButtons();
 } 
 
 void 
 Board::execButtons(){
   uint8_t buttons = buttons_prev & arduboy.buttonsState();
-  if(buttons & UP_BUTTON)
+  if (!(previousButtonState & UP_BUTTON) && (currentButtonState & UP_BUTTON))
     cursorUp();
-  if(buttons & DOWN_BUTTON)
+  if (!(previousButtonState & DOWN_BUTTON) && (currentButtonState & DOWN_BUTTON))
     cursorDown();
-  if(buttons & LEFT_BUTTON)
+  if (!(previousButtonState & LEFT_BUTTON) && (currentButtonState & LEFT_BUTTON))
     cursorLeft();
-  if(buttons & RIGHT_BUTTON)
+  if (!(previousButtonState & RIGHT_BUTTON) && (currentButtonState & RIGHT_BUTTON))
     cursorRight();
-  }
-  }
-  buttons_prev = arduboy.buttonsState();
+  if (!(previousButtonState & A_BUTTON) && (currentButtonState & A_BUTTON))
+    placeStone(cursor_row, cursor_col, WHITE);
+  if (!(previousButtonState & B_BUTTON) && (currentButtonState & B_BUTTON))
+    placeStone(cursor_row, cursor_col, BLACK);
 };
 
 void

@@ -33,12 +33,24 @@ struct
    unsigned int color: 1;
 } typedef point_t;
 
-unsigned long cursor_millis, button_millis;
+unsigned long cursor_millis;
 uint8_t cursor_row, cursor_col, cursor_color;
 uint8_t buttons_prev;
 point_t points[size][size];
 
 void execButtons();
+void placeStone(uint8_t row, uint8_t col, uint8_t color){
+  point_t point = points[row][col];
+  if(!point.occupied){
+    point.occupied = 1;
+    point.color = color;
+  }
+}
+
+void removeStone(uint8_t row, uint8_t col){
+  points[row][col].occupied = 0;
+}
+
 
 };
 
