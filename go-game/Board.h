@@ -10,6 +10,12 @@
 
 struct Board{
 
+
+typedef uint8_t point_t;
+const point_t WHITE_STONE = 0x01;
+const point_t BLACK_STONE = 0x02;
+static const int size = 9;
+
 Board(){
   clear();
 }
@@ -20,19 +26,29 @@ void loop();
 void dump();
 void print();
 
+int isEmpty(int row, int col){
+  return points[row][col] & ANY_STONE ? 0 : 1;
+}
+
+void setCursor(int row, int col){
+  cursor_row = row;
+  cursor_col = col;
+}
+
+void placeStone(int row, int col, point_t color){
+  points[row][col] = color;
+}
+
+
 private:
 
-typedef uint8_t point_t;
 typedef uint8_t idx_t;
 struct {
   idx_t row, col;
 } typedef row_col_t;
 
-static const int size = 9;
 static const int size2 = size * size;
 
-const point_t WHITE_STONE = 0x01;
-const point_t BLACK_STONE = 0x02;
 const point_t ANY_STONE   = 0x03;
 
 const point_t META_MASK   = 0x03;
@@ -62,22 +78,10 @@ uint8_t getPoint(int row, int col){
   return points[row][col];
 }
 
-void setCursor(int row, int col){
-  cursor_row = row;
-  cursor_col = col;
-}
-
-void placeStone(int row, int col, point_t color){
-  points[row][col] = color;
-}
-
 void removeStone(int row, int col){
   points[row][col] = 0;
 }
 
-int isEmpty(int row, int col){
-  return points[row][col] & ANY_STONE ? 0 : 1;
-}
 int isWhite(int row, int col){
   return points[row][col] & WHITE_STONE ? 1 : 0;
 }

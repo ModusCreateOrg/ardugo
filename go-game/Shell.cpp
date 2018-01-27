@@ -9,11 +9,104 @@
  *  Author: Don Anderson
  */
 
+static void
+what(const char* msg){
+  Serial.print("What: ");
+  Serial.println(msg);
+}
+
+static void
+what(const char* msg1, const char* msg2){
+  Serial.print("What: ");
+  Serial.print(msg1);
+  Serial.println(msg2);
+}
+
+static void
+what(const char* msg1, const char* msg2, const char* msg3){
+  Serial.print("What: ");
+  Serial.print(msg1);
+  Serial.print(msg2);
+  Serial.println(msg3);
+}
+
+static int
+check_row(const char* arg){
+  int row = strtol(arg, NULL, 10);
+  if(row < 0){
+    what("The row is below zero: ", arg);
+    return -1;
+  }
+  if(row >= board.size){
+    what("The row is above 8: ", arg);
+    return -1;
+  }
+  return row;
+}
+
+static int
+check_col(const char* arg){
+  int col = strtol(arg, NULL, 10);
+  if(col < 0){
+    what("The column is below zero: ", arg);
+    return -1;
+  }
+  if(col >= board.size){
+    what("The column is above 8: ", arg);
+    return -1;
+  }
+  return col;
+}
+
+static void
+set_cursor(int nargs, const char** argv){
+  
+  if(nargs < 3){
+    what("Too few args, needs 2!");
+    return;
+  }
+
+  int row = check_row(argv[1]);
+  int col = check_col(argv[2]);
+
+  if (row != -1 && col != -1)
+    board.setCursor(row, col);
+
+}
+
+static void
+place_stone(int nargs, const char** argv){
+  
+  if(nargs < 4){
+    what("Too few args, needs 3!");
+    return;
+  }
+
+  int row = check_row(argv[1]);
+  int col = check_col(argv[2]);
+
+  if (row != -1 && col != -1){
+    if(board.isEmpty(row, col)){
+      if(!strcmp(argv[3], "W"))
+        board.placeStone(row, col, board.WHITE_STONE);
+      else if(!strcmp(argv[3], "B"))
+        board.placeStone(row, col, board.BLACK_STONE);
+      else
+        what("Invalid color:", argv[3]);
+    }
+    else
+      what("The point is not empty: ", argv[1], argv[2]);
+  }
+}
+
 
 static void
 get_mem(int nargs, const char** argv){
-  if(nargs < 2)
-    return -1;
+  
+  if(nargs < 2){
+    what("Too few args, needs 1!");
+    return;
+  }
 
   long addr = strtol(argv[1], NULL, 16);
   char typ = nargs > 2 ? argv[2][0] : 'i';
@@ -66,12 +159,6 @@ Shell::exec(char* line){
   exec();
 }
 
-static void
-what(const char* arg0){
-  Serial.print("What: ");
-  Serial.println(arg0);
-}
-
 void 
 Shell::exec(){
   if(nargs){
@@ -91,6 +178,22 @@ Shell::exec(){
           print_globals();
         else if(!strcmp(argv[0], "print-board"))
           board.print();
+        else if(!strcmp(argv[0], "place-stone"))
+          place_stone(nargs, argv);
+        else
+          what(argv[0]);
+        break;
+
+      case 'c':
+        if(!strcmp(argv[0], "clear-board"))
+          board.clear();
+        else
+          what(argv[0]);
+        break;
+
+      case 's':
+        if(!strcmp(argv[0], "set-cursor"))
+          set_cursor(nargs, argv);
         else
           what(argv[0]);
         break;
