@@ -26,7 +26,6 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("loop1");
   board.loop();
   shell.loop();
   arduboy.clear();

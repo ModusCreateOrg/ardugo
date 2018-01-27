@@ -13,12 +13,12 @@ struct Board{
 static const int size = 9;
 
 Board(){
-  cursor_row = cursor_col = 5;
+  cursor_row = cursor_col = 4;
 }
 
 void cursorUp()    {if(cursor_row < size-1) cursor_row++; else cursor_row = 0;}
-void cursorDown()  {if(cursor_row) cursor_row--; else cursor_row = size-1;}
-void cursorLeft()  {if(cursor_col) cursor_col--; else cursor_col = size-1;}
+void cursorDown()  {if(cursor_row > 0) cursor_row--; else cursor_row = size-1;}
+void cursorLeft()  {if(cursor_col > 0) cursor_col--; else cursor_col = size-1;}
 void cursorRight() {if(cursor_col < size-1) cursor_col++; else cursor_col = 0;}
 
 void loop();

@@ -35,6 +35,8 @@ Board::execButtons(){
     cursorLeft();
   if(buttons & RIGHT_BUTTON)
     cursorRight();
+  }
+  }
   buttons_prev = arduboy.buttonsState();
 };
 
@@ -42,7 +44,7 @@ void
 Board::render(){
   drawBitmap(65, 0, board_background);
   if(cursor_color == BLACK)
-    arduboy.fillRect(65 + 7 * cursor_col, 64 - 7 * cursor_row, 6, 6, BLACK);
+    arduboy.fillRect(65 + 7 * cursor_col, 57 - 7 * cursor_row, 6, 6, BLACK);
 }
 
 
