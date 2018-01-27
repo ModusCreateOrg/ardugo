@@ -1,6 +1,8 @@
 # ArduGo
 
-ArduGo is an implementation of a goban for the Arduboy game console.
+ArduGo is an implementation of a board for playing the game of Go. It is designed to run on the Arduboy game console.
+
+The board has nine columns and rows, which is the right size for learning to play Go, and for fitting into the Arduino's limited resources.
 
 You make the first play by moving the cursor with the arrow keys and pressing the "A"  button to place a black stone on the board.
 
@@ -8,6 +10,33 @@ The game will respond by placing a white stone on the board and then it is your 
 
 Pressing the "B" button restarts the game.
 
+# Serial Shell
+
+The shell is used to remotely control and monitor the application while it is running on the Arduboy. It communicates over the serial connection, helps find defects during development, and supports automated testing. The interpreter polls one command-line on each iteration of the event loop.  
+
+Events injected using the shell will each activate in a different event loop. Multiple physical buttons may activate in one event loop, so the behavior is different.
+
+The board has nine columns and rows, and their argument values below range from 0 to 8. The address for the get-mem command is a 16-bit hexadecimal value with no leading '0x'. The second argument to the get-mem command is optional and will cast the memory location before encoding. If the integer types (i,l) are uppercase, they will render in hexadecimal.
+
+The interpreter eveluates these commands:
+
+* dump-board
+* print-board
+* place-stone row column (B|W)
+* clear-board
+* set-cursor row column
+* button-up
+* button-down
+* button-left
+* button-right
+* button-A
+* button-B
+* get-mem address [(i|l|f|d)]
+
 # Automated Testing
 
-The automated test suite, written in Python, is used to test the application on the ArduBoy using the serial port. 
+The automated test suite, written in Python, is used to test the application on the Arduboy using the shell over the serial connection. 
+
+
+
+

@@ -210,9 +210,9 @@ Shell::exec(){
           injectButton(LEFT_BUTTON);
         else if(!strcmp(argv[0], "button-right"))
           injectButton(RIGHT_BUTTON);
-        else if(!strcmp(argv[0], "button-a"))
+        else if(!strcmp(argv[0], "button-A"))
           injectButton(A_BUTTON);
-        else if(!strcmp(argv[0], "button-b"))
+        else if(!strcmp(argv[0], "button-B"))
           injectButton(B_BUTTON);
         else
           what(argv[0]);
