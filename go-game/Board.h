@@ -37,6 +37,8 @@ const point_t ANY_STONE   = 0x03;
 const point_t META_MASK  = 0x03;
 const point_t VALID_NEXT = 0x04;
 const point_t CAPTURED   = 0x08;
+const point_t HAS_AIR    = 0x0F;
+
 
 void cursorUp()    {if(cursor_row < size-1) cursor_row++; else cursor_row = 0;}
 void cursorDown()  {if(cursor_row > 0) cursor_row--; else cursor_row = size-1;}
@@ -46,6 +48,7 @@ void cursorRight() {if(cursor_col < size-1) cursor_col++; else cursor_col = 0;}
 void clearMeta();
 void clearValid();
 void clearCaptured();
+void clearHasAir();
 
 void checkValid(point_t color);
 
@@ -82,6 +85,15 @@ int isWhite(int row, int col){
 int isBlack(int row, int col){
   return points[row][col] & BLACK_STONE ? 1 : 0;
 }
+int isCaptured(int row, int col){
+  return points[row][col] & CAPTURED ? 1 : 0;
+}
+int hasAir(int row, int col){
+  return points[row][col] & HAS_AIR ? 1 : 0;
+}
+int isValid(int row, int col){
+  return points[row][col] & VALID_NEXT ? 1 : 0;
+}
 
 point_t *pointPtr(int row, int col){
   return &points[row][col];
@@ -96,25 +108,16 @@ point_t *pointsEnd(){
 }
 
 // VALIDATION
-
-int markValids(row_col_t *index);
+int markValids(point_t color, row_col_t *index);
 int checkValid(int row, int col, point_t color);
 
-int isValid(int row, int col){
-  return points[row][col] & VALID_NEXT ? 1 : 0;
-}
-
 // MOVE
-
 int nextMove(point_t color, row_col_t &row_col);
 void move(int row, int col, point_t color);
-int markCaptures(row_col_t *index);
+int markCaptures(point_t color, row_col_t *index);
+void markHasAir();
+void removeMarkedCaptures();
 int checkCaptured(int row, int col, point_t color);
-
-int isCaptured(int row, int col){
-  return points[row][col] & CAPTURED ? 1 : 0;
-}
-
 
 };//Board
 

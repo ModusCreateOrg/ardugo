@@ -17,11 +17,11 @@ Board::checkValid(int row, int col, point_t color){
 }
 
 int
-Board::markValids(row_col_t *index){
+Board::markValids(point_t color, row_col_t *index){
   int cnt = 0;
   for(int r=0; r<size; r++){
     for(int c=0; c<size; c++){
-      if(checkValid(r, c, WHITE_STONE)){
+      if(checkValid(r, c, color)){
         points[r][c] |= VALID_NEXT;
         if(index){
           index[cnt].row = r;
