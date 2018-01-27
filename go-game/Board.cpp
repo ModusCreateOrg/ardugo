@@ -13,37 +13,36 @@
 
 void
 Board::loop(){
-  if(millis() > cursor_millis + 100){
+  if(millis() > cursor_millis + 300){
     cursor_millis = millis();
-    toggleCursor();
+    cursor_color = cursor_color == WHITE ? BLACK : WHITE;
+  }
+
+  if(millis() > button_millis + 75){
+    button_millis = millis();
+    execButtons();
   }
 } 
 
-void
-Board::drawBoard(){
-  drawBitmap(64, 0, board_background);
-}
-
 void 
-Board::toggleCursor(){
-  if(cursor_state & 0x01){
-
-  }
+Board::execButtons(){
+  uint8_t buttons = buttons_prev & arduboy.buttonsState();
+  if(buttons & UP_BUTTON)
+    cursorUp();
+  if(buttons & DOWN_BUTTON)
+    cursorDown();
+  if(buttons & LEFT_BUTTON)
+    cursorLeft();
+  if(buttons & RIGHT_BUTTON)
+    cursorRight();
+  buttons_prev = arduboy.buttonsState();
 };
 
 void
 Board::render(){
-  drawBoard();
-}
-
-void
-Board::cursorOn(){
- 
-}
-
-void
-Board::cursorOff(){
- 
+  drawBitmap(65, 0, board_background);
+  if(cursor_color == BLACK)
+    arduboy.fillRect(65 + 7 * cursor_col, 64 - 7 * cursor_row, 6, 6, BLACK);
 }
 
 

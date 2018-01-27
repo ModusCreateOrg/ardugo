@@ -19,12 +19,17 @@ void setup() {
   player1 = new HumanPlayer();
   player2 = new HumanPlayer();
 
+  arduboy.start();
   ardugo_setup();
 
   Serial.println("End setup()");
 }
 
 void loop() {
+  Serial.println("loop1");
   board.loop();
-  shell.loop(); 
+  shell.loop();
+  arduboy.clear();
+  board.render();
+  arduboy.display();
 }

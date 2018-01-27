@@ -1,2 +1,2 @@
 # ArduGo
-ArduGo is implementation of a goban for the Arduboy game console.
+ArduGo is an implementation of a goban for the Arduboy game console.

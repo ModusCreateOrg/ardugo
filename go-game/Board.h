@@ -16,10 +16,10 @@ Board(){
   cursor_row = cursor_col = 5;
 }
 
-void cursorUp()    {cursor_moved = 1; if(cursor_row < size-1) cursor_row++; else cursor_row = 0;}
-void cursorDown()  {cursor_moved = 1; if(cursor_row) cursor_row--; else cursor_row = size-1;}
-void cursorLeft()  {cursor_moved = 1; if(cursor_col) cursor_col--; else cursor_col = size-1;}
-void cursorRight() {cursor_moved = 1; if(cursor_col < size-1) cursor_col++; else cursor_col = 0;}
+void cursorUp()    {if(cursor_row < size-1) cursor_row++; else cursor_row = 0;}
+void cursorDown()  {if(cursor_row) cursor_row--; else cursor_row = size-1;}
+void cursorLeft()  {if(cursor_col) cursor_col--; else cursor_col = size-1;}
+void cursorRight() {if(cursor_col < size-1) cursor_col++; else cursor_col = 0;}
 
 void loop();
 void dump(){return 0;}
@@ -33,18 +33,18 @@ struct
    unsigned int color: 1;
 } typedef point_t;
 
-unsigned long cursor_millis;
-uint8_t cursor_row, cursor_col, cursor_state;
-uint8_t cursor_x, cursor_y, cursor_moved;
+unsigned long cursor_millis, button_millis;
+uint8_t cursor_row, cursor_col, cursor_color;
+uint8_t buttons_prev;
 point_t points[size][size];
 
-void toggleCursor();
-void cursorOn();
-void cursorOff();
-void drawBoard();
+void execButtons();
 
 };
 
 extern Board board;
 
 #endif
+
+
+

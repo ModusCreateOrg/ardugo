@@ -18,17 +18,13 @@ Shell shell;
 Game  *game;
 Player *player1, *player2;
 
-int ardugo_setup(){
-
-  arduboy.start();
-  arduboy.clear();
-  board.render();
-  arduboy.display();
-
+void
+ardugo_setup(){
   return 0;
 }
 
-int dump_globals(){
+void 
+dump_globals(){
   return 0;
 }
 
