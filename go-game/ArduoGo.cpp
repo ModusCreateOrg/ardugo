@@ -2,8 +2,6 @@
 #include "ArduGo.h"
 #include "Shell.h"
 #include "Board.h"
-#include "Game.h"
-#include "Player.h"
 
 /*
  *  File: ArduGo.cpp

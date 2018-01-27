@@ -148,18 +148,21 @@ Shell::execSerial(){
 
   if(int n = Serial.available()){
       char line[33];
-      line[Serial.readBytesUntil('\r', line, sizeof(line)-1)] = 0;
-      exec(line);
+      line[Serial.readBytesUntil('\n', line, sizeof(line)-1)] = 0;
+      if(exec(line) < 0)
+        Serial.println("ERROR");
+      else
+        Serial.println("OK");
   }
 }
 
-void  
+int  
 Shell::exec(char* line){
   tokenize(line);
-  exec();
+  return exec();
 }
 
-void 
+int 
 Shell::exec(){
   if(nargs){
     switch(argv[0][0]){

@@ -24,9 +24,9 @@ static const int NARGS = 5;
 const char *argv[NARGS];
 byte nargs;
 
-void exec(char* line);
+int exec(char* line);
+int exec();
 void execSerial();
-void exec();
 
 void tokenize(char* line){
 
