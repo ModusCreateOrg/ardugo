@@ -97,7 +97,6 @@ point_t *pointsEnd(){
 int markValids(index_t *index);
 int checkValid(int row, int col, point_t color);
 
-
 int isValid(int row, int col){
   return points[row][col] & VALID_NEXT ? 1 : 0;
 }

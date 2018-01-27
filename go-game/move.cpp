@@ -4,7 +4,7 @@
 
 /*
  *  File: validate.cpp
- *  Purpose: Implementation of move validation methods.
+ *  Purpose: Implementation of move algorithms.
  *  Author: Don Anderson
  */
 
@@ -13,12 +13,13 @@ Board::move(){
 
   clearMeta();
 
-  index_t index[size];
+  index_t index[size2];
   int n = markValids(index);
 
   if(n){
-    int r = rand()%n;
-    placeStone(index[r].row, index[r].col, WHITE_STONE);
+    int ri = rand()%n;
+    placeStone(index[ri].row, index[ri].col, WHITE_STONE);
+    setCursor(index[ri].row, index[ri].col);
   }
 
 }
