@@ -86,6 +86,32 @@ Shell::exec(){
           what(argv[0]);
         break;
 
+      case 'p':
+        if(!strcmp(argv[0], "print-globals"))
+          print_globals();
+        else if(!strcmp(argv[0], "print-board"))
+          board.print();
+        else
+          what(argv[0]);
+        break;
+
+      case 'b':
+        if(!strcmp(argv[0], "button-up"))
+          injectButton(UP_BUTTON);
+        else if(!strcmp(argv[0], "button-down"))
+          injectButton(DOWN_BUTTON);
+        else if(!strcmp(argv[0], "button-left"))
+          injectButton(LEFT_BUTTON);
+        else if(!strcmp(argv[0], "button-right"))
+          injectButton(RIGHT_BUTTON);
+        else if(!strcmp(argv[0], "button-a"))
+          injectButton(A_BUTTON);
+        else if(!strcmp(argv[0], "button-b"))
+          injectButton(B_BUTTON);
+        else
+          what(argv[0]);
+        break;
+
       case 'g':
         if(!strcmp(argv[0], "get-mem"))
           get_mem(nargs, argv);

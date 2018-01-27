@@ -18,6 +18,7 @@ void render();
 void clear();
 void loop();
 void dump();
+void print();
 
 private:
 

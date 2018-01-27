@@ -1,4 +1,5 @@
 # ArduGo
+
 ArduGo is an implementation of a goban for the Arduboy game console.
 
 You make the first play by moving the cursor with the arrow keys and pressing the "A"  button to place a black stone on the board.

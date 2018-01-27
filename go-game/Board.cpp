@@ -21,16 +21,12 @@ Board::loop(){
 void 
 Board::execButtons(){
   uint8_t buttons = buttons_prev & arduboy.buttonsState();
-  if (!(previousButtonState & UP_BUTTON) && (currentButtonState & UP_BUTTON))
-    cursorUp();
-  if (!(previousButtonState & DOWN_BUTTON) && (currentButtonState & DOWN_BUTTON))
-    cursorDown();
-  if (!(previousButtonState & LEFT_BUTTON) && (currentButtonState & LEFT_BUTTON))
-    cursorLeft();
-  if (!(previousButtonState & RIGHT_BUTTON) && (currentButtonState & RIGHT_BUTTON))
-    cursorRight();
-
-  if (!(previousButtonState & A_BUTTON) && (currentButtonState & A_BUTTON)){
+  if (wasJustPressed(UP_BUTTON)) cursorUp();
+  if (wasJustPressed(DOWN_BUTTON)) cursorDown();
+  if (wasJustPressed(LEFT_BUTTON)) cursorLeft();
+  if (wasJustPressed(RIGHT_BUTTON)) cursorRight();
+ 
+  if (wasJustPressed(A_BUTTON)){
     if(!checkValid(cursor_row, cursor_col, BLACK_STONE)){
       tunes.tone(150, 100);
     }
@@ -45,7 +41,7 @@ Board::execButtons(){
     }
   } 
   
-  if (!(previousButtonState & B_BUTTON) && (currentButtonState & B_BUTTON)){
+  if (wasJustPressed(B_BUTTON)){
     clear();
   }
 
@@ -76,6 +72,17 @@ Board::render(){
 
 void 
 Board::dump(){
+  point_t *p = pointsBeg();
+  point_t *e = pointsEnd();
+  while(p != e){
+    if(*p < 0x10) Serial.print("0");
+    Serial.print(*p++, HEX);
+  }
+  Serial.println();
+}
+
+void 
+Board::print(){
   for(int c=0; c < size; c++){
     for(int r=size-1; r >= 0; r--){
 
@@ -87,9 +94,21 @@ Board::dump(){
       else
         Serial.print(" .");
 
-      // meta
+      // ISVALID
       if(isValid(r,c))
         Serial.print("v");
+      else
+        Serial.print("_");
+
+      // ISCAPTURED
+      if(isCaptured(r,c))
+        Serial.print("c");
+      else
+        Serial.print("_");
+
+      // HASAIR
+      if(hasAir(r,c))
+        Serial.print("a");
       else
         Serial.print("_");
     }

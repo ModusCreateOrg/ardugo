@@ -20,10 +20,12 @@ void setup() {
 void loop() {
   previousButtonState = currentButtonState;
   currentButtonState = arduboy.buttonsState();
-  
-  board.loop();
+
   shell.loop();
+  board.loop();
   arduboy.clear();
   board.render();
   arduboy.display();
+
+  injectButtonState = 0;
 }

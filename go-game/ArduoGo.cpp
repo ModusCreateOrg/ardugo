@@ -19,6 +19,19 @@ Shell shell;
 
 uint8_t previousButtonState = 0;
 uint8_t currentButtonState = 0;
+uint8_t injectButtonState = 0;
+
+void
+injectButton(uint8_t button){
+  injectButtonState |= button;
+}
+
+int 
+wasJustPressed(uint8_t button){
+ return  (injectButtonState & button) ||
+         !(previousButtonState & button) && (currentButtonState & button)
+         ? 1 : 0;
+}
 
 void
 ardugo_setup(){
@@ -27,6 +40,10 @@ ardugo_setup(){
 
 void 
 dump_globals(){
+}
+
+void 
+print_globals(){
 }
 
 void
