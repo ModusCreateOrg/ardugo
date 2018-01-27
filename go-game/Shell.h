@@ -42,9 +42,7 @@ void tokenize(char* line){
 }
 
 
-
-
-};//class
+};//Shell
 
 extern Shell shell;
 

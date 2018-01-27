@@ -3,8 +3,6 @@
 #include "Board.h"
 #include "assets.h"
 
-#include <Arduboy.h>
-
 /*
  *  File: Board.cpp
  *  Purpose: Implementation of board data and methods.
@@ -33,7 +31,7 @@ Board::execButtons(){
     cursorRight();
 
   if (!(previousButtonState & A_BUTTON) && (currentButtonState & A_BUTTON)){
-    if(getPoint(cursor_row, cursor_col)){
+    if(!checkValid(cursor_row, cursor_col, BLACK_STONE)){
       tunes.tone(150, 100);
     }
     else{
@@ -60,10 +58,10 @@ Board::render(){
   // Draw Stones
   for(int r=0; r<size; r++){
     for(int c=0; c<size; c++){
-      if(getPoint(r,c) & WHITE_STONE){
+      if(isWhite(r,c)){
           arduboy.drawRect(67+7*c, 58-7*r, 4, 4, BLACK);
       }
-      else if(getPoint(r,c) & BLACK_STONE){
+      else if(isBlack(r,c)){
           arduboy.fillRect(67+7*c, 58-7*r, 4, 4, BLACK);
       }
     }
@@ -74,58 +72,40 @@ void
 Board::dump(){
   for(int c=0; c < size; c++){
     for(int r=size-1; r >= 0; r--){
-      if(getPoint(r,c) & WHITE_STONE)
+
+      // stone
+      if(isWhite(r,c))
           Serial.print(" W");
-      else if(getPoint(r,c) & BLACK_STONE)
+      else if(isBlack(r,c))
           Serial.print(" B");
       else
         Serial.print(" .");
+
+      // meta
+      if(isValid(r,c))
+        Serial.print("v");
+      else
+        Serial.print("_");
     }
-    Serial.println();
+  Serial.println();
   }
 }
 
 void 
 Board::clear(){
+  point_t *p = pointsBeg();
+  point_t *e = pointsEnd();
+  while(p != e) *p++ = 0;
   cursor_row = cursor_col = 4;
-  for(int r=0; r<size; r++){
-    for(int c=0; c<size; c++){
-      removeStone(r,c);
-    }
-  }
 }
 
 void 
-Board::move(){
-
-  int cnt = 0;
-  for(int r=0; r<size; r++){
-    for(int c=0; c<size; c++){
-      if(!getPoint(r,c)){
-        cnt++;
-      }
-    }
-  }
-
-  if(cnt == 0)
-    return;
-
-  int rnd = rand()%(cnt-1);
-
-  cnt = 0;
-  for(int r=0; r<size; r++){
-    for(int c=0; c<size; c++){
-      if(!getPoint(r,c)){
-        if(cnt == rnd){
-          placeStone(r, c, WHITE_STONE);
-          setCursor(r,c);
-          return;
-        }
-        cnt++;
-      }
-    }
-  }
+Board::clearMeta(){
+  point_t *p = pointsBeg();
+  point_t *e = pointsEnd();
+  while(p != e) *p++ &= META_MASK;
 }
+
 
 
 
