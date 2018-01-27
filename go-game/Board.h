@@ -10,11 +10,14 @@
 
 struct Board{
 
+typedef uint8_t point_t;
+
 static const int size = 9;
+const point_t WHITE_STONE = 0x01;
+const point_t BLACK_STONE = 0x02;
 
 Board(){
   clear();
-  cursor_row = cursor_col = 4;
 }
 
 void cursorUp()    {if(cursor_row < size-1) cursor_row++; else cursor_row = 0;}
@@ -29,13 +32,22 @@ void clear();
 
 private:
 
+
+
+
+
 unsigned long cursor_millis;
 int cursor_row, cursor_col;
 uint8_t buttons_prev, cursor_color;
-uint8_t points[size][size];
+point_t points[size][size];
 
 void execButtons();
-void placeStone(int row, int col, uint8_t color){
+
+uint8_t getPoint(int row, int col){
+  return points[row][col];
+}
+
+void placeStone(int row, int col, point_t color){
   points[row][col] = color;
 }
 

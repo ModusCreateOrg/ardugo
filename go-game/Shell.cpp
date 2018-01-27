@@ -2,8 +2,6 @@
 #include "ArduGo.h"
 #include "Shell.h"
 #include "Board.h"
-#include "Game.h"
-#include "Player.h"
 
 /*
  *  File: Shell.cpp
@@ -84,12 +82,6 @@ Shell::exec(){
           dump_globals();
         else if(!strcmp(argv[0], "dump-board"))
           board.dump();
-        else if(!strcmp(argv[0], "dump-game"))
-          game->dump();
-        else if(!strcmp(argv[0], "dump-player1"))
-          player1->dump();
-        else if(!strcmp(argv[0], "dump-player2"))
-          player2->dump();
         else
           what(argv[0]);
         break;

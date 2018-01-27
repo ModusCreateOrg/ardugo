@@ -13,16 +13,8 @@
 void setup() {
   Serial.begin(9600);
   while (!Serial);
-  Serial.println("Begin setup()");
-
-  game = new GoGame();
-  player1 = new HumanPlayer();
-  player2 = new HumanPlayer();
-
   arduboy.start();
   ardugo_setup();
-
-  Serial.println("End setup()");
 }
 
 void loop() {

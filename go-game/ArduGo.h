@@ -13,12 +13,8 @@
 struct Game;
 struct Player;
 
-const uint8_t WHITE_STONE = 0x01;
-const uint8_t BLACK_STONE = 0x02;
-
 extern Arduboy arduboy;
-extern Game *game;
-extern Player *player1, *player2;
+extern ArduboyTunes tunes;
 
 extern uint8_t previousButtonState;
 extern uint8_t currentButtonState;

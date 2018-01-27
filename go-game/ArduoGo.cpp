@@ -15,9 +15,6 @@ Arduboy arduboy;
 Board board;
 Shell shell;
 
-Game  *game;
-Player *player1, *player2;
-
 uint8_t previousButtonState = 0;
 uint8_t currentButtonState = 0;
 
