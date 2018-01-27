@@ -32,19 +32,21 @@ void clear();
 
 private:
 
-
-
-
-
 unsigned long cursor_millis;
 int cursor_row, cursor_col;
 uint8_t buttons_prev, cursor_color;
 point_t points[size][size];
 
 void execButtons();
+void move();
 
 uint8_t getPoint(int row, int col){
   return points[row][col];
+}
+
+void setCursor(int row, int col){
+  cursor_row = row;
+  cursor_col = col;
 }
 
 void placeStone(int row, int col, point_t color){

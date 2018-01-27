@@ -39,6 +39,7 @@ Board::execButtons(){
     else{
       placeStone(cursor_row, cursor_col, BLACK_STONE);
       tunes.tone(2000, 100);
+      move();
     }
   }
   
@@ -90,6 +91,38 @@ Board::clear(){
   for(int r=0; r<size; r++){
     for(int c=0; c<size; c++){
       removeStone(r,c);
+    }
+  }
+}
+
+void 
+Board::move(){
+
+  int cnt = 0;
+  for(int r=0; r<size; r++){
+    for(int c=0; c<size; c++){
+      if(!getPoint(r,c)){
+        cnt++;
+      }
+    }
+  }
+
+  if(cnt == 0)
+    return;
+
+  int rnd = rand()%(cnt-1);
+
+  cnt = 0;
+  for(int r=0; r<size; r++){
+    for(int c=0; c<size; c++){
+      if(!getPoint(r,c)){
+        if(cnt == rnd){
+          placeStone(r, c, WHITE_STONE);
+          setCursor(r,c);
+          return;
+        }
+        cnt++;
+      }
     }
   }
 }

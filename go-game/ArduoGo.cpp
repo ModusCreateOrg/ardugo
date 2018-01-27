@@ -12,6 +12,8 @@
  */
 
 Arduboy arduboy;
+ArduboyTunes tunes;
+
 Board board;
 Shell shell;
 
