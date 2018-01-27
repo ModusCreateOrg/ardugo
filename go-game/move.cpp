@@ -24,6 +24,9 @@ Board::nextMove(point_t color, row_col_t &row_col){
 void
 Board::move(int row, int col, point_t color){
     placeStone(row, col, color);
+    Board::markHasAir();
+    markCaptures(color, NULL);
+    removeMarkedCaptures();
 }
 
 void 
@@ -47,7 +50,8 @@ Board::markCaptures(point_t color, row_col_t *index){
       }
     }
   }
-  return cnt;}
+  return cnt;
+}
 
 int 
 Board::checkCaptured(int row, int col, point_t color){

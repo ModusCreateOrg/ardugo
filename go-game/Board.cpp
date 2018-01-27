@@ -106,12 +106,11 @@ Board::clear(){
 }
 
 void 
-Board::clearMeta(){
+Board::clearMeta(point_t exclude_mask){
   point_t *p = pointsBeg();
   point_t *e = pointsEnd();
-  while(p != e) *p++ &= META_MASK;
+  while(p != e) *p++ &= (META_MASK | exclude_mask);
 }
-
 
 
 

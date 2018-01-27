@@ -34,7 +34,8 @@ const point_t WHITE_STONE = 0x01;
 const point_t BLACK_STONE = 0x02;
 const point_t ANY_STONE   = 0x03;
 
-const point_t META_MASK  = 0x03;
+const point_t META_MASK   = 0x03;
+
 const point_t VALID_NEXT = 0x04;
 const point_t CAPTURED   = 0x08;
 const point_t HAS_AIR    = 0x0F;
@@ -45,10 +46,7 @@ void cursorDown()  {if(cursor_row > 0) cursor_row--; else cursor_row = size-1;}
 void cursorLeft()  {if(cursor_col > 0) cursor_col--; else cursor_col = size-1;}
 void cursorRight() {if(cursor_col < size-1) cursor_col++; else cursor_col = 0;}
 
-void clearMeta();
-void clearValid();
-void clearCaptured();
-void clearHasAir();
+void clearMeta(point_t exclude_mask = 0);
 
 void checkValid(point_t color);
 

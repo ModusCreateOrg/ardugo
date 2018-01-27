@@ -6,3 +6,7 @@ You make the first play by moving the cursor with the arrow keys and pressing th
 The game will respond by placing a white stone on the board and then it is your turn again. You continue to alternate turns until one player wins.
 
 Pressing the "B" button restarts the game.
+
+# Automated Testing
+
+The automated test suite, written in Python, is used to test the application on the ArduBoy using the serial port. 
