@@ -80,15 +80,15 @@ Shell::exec(){
     switch(argv[0][0]){
 
       case 'd':
-        if(!strcmp(argv[0], "dump_globals"))
+        if(!strcmp(argv[0], "dump-globals"))
           dump_globals();
-        else if(!strcmp(argv[0], "dump_board"))
+        else if(!strcmp(argv[0], "dump-board"))
           board.dump();
-        else if(!strcmp(argv[0], "dump_game"))
+        else if(!strcmp(argv[0], "dump-game"))
           game->dump();
-        else if(!strcmp(argv[0], "dump_player1"))
+        else if(!strcmp(argv[0], "dump-player1"))
           player1->dump();
-        else if(!strcmp(argv[0], "dump_player2"))
+        else if(!strcmp(argv[0], "dump-player2"))
           player2->dump();
         else
           what(argv[0]);

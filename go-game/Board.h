@@ -13,6 +13,7 @@ struct Board{
 static const int size = 9;
 
 Board(){
+  clear();
   cursor_row = cursor_col = 4;
 }
 
@@ -22,33 +23,24 @@ void cursorLeft()  {if(cursor_col > 0) cursor_col--; else cursor_col = size-1;}
 void cursorRight() {if(cursor_col < size-1) cursor_col++; else cursor_col = 0;}
 
 void loop();
-void dump(){return 0;}
+void dump();
 void render();
+void clear();
 
 private:
 
-struct
-{
-   unsigned int occupied: 1;
-   unsigned int color: 1;
-} typedef point_t;
-
 unsigned long cursor_millis;
-uint8_t cursor_row, cursor_col, cursor_color;
-uint8_t buttons_prev;
-point_t points[size][size];
+int cursor_row, cursor_col;
+uint8_t buttons_prev, cursor_color;
+uint8_t points[size][size];
 
 void execButtons();
-void placeStone(uint8_t row, uint8_t col, uint8_t color){
-  point_t point = points[row][col];
-  if(!point.occupied){
-    point.occupied = 1;
-    point.color = color;
-  }
+void placeStone(int row, int col, uint8_t color){
+  points[row][col] = color;
 }
 
-void removeStone(uint8_t row, uint8_t col){
-  points[row][col].occupied = 0;
+void removeStone(int row, int col){
+  points[row][col] = 0;
 }
 
 

@@ -13,8 +13,8 @@
 struct Game;
 struct Player;
 
-const uint8_t BLACK_STONE = 0;
-const uint8_t WHITE_STONE = 0;
+const uint8_t WHITE_STONE = 0x01;
+const uint8_t BLACK_STONE = 0x02;
 
 extern Arduboy arduboy;
 extern Game *game;
@@ -27,6 +27,6 @@ void ardugo_setup();
 void dump_globals();
 
 void
-drawBitmap(uint8_t x, uint8_t y, uint8_t *bitmap);
+drawBitmap(uint16_t x, uint16_t y, uint8_t *bitmap);
 
 #endif

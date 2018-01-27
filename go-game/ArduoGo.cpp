@@ -23,17 +23,16 @@ uint8_t currentButtonState = 0;
 
 void
 ardugo_setup(){
-  return 0;
+  board.clear();
 }
 
 void 
 dump_globals(){
-  return 0;
 }
 
 void
-drawBitmap(uint8_t x, uint8_t y, uint8_t *bitmap){
-  arduboy.drawBitmap(64, 0, bitmap+2, bitmap[0], bitmap[1] ,WHITE);
+drawBitmap(uint16_t x, uint16_t y, uint8_t *bitmap){
+  arduboy.drawBitmap(x, y, bitmap+2, bitmap[0], bitmap[1] ,WHITE);
 }
 
 

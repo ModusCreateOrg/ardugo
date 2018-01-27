@@ -1,24 +1,6 @@
 #ifndef ASSETS_H
 #define ASSETS_H
 
-// black_stone.png
-// 4x4
-PROGMEM const unsigned char black_stone[] = {
-// width, height
-4, 4,
-0x00, 0x00, 0x00, 0x00
-
-};
-
-// white_stone.png
-// 4x4
-PROGMEM const unsigned char white_stone[] = {
-// width, height
-4, 4,
-0x00, 0x06, 0x06, 0x00
-
-};
-
 // board_background.png
 // 64x64
 PROGMEM const unsigned char board_background[] = {

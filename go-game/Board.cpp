@@ -31,18 +31,62 @@ Board::execButtons(){
     cursorLeft();
   if (!(previousButtonState & RIGHT_BUTTON) && (currentButtonState & RIGHT_BUTTON))
     cursorRight();
+
   if (!(previousButtonState & A_BUTTON) && (currentButtonState & A_BUTTON))
-    placeStone(cursor_row, cursor_col, WHITE);
+    placeStone(cursor_row, cursor_col, BLACK_STONE);
+  
   if (!(previousButtonState & B_BUTTON) && (currentButtonState & B_BUTTON))
-    placeStone(cursor_row, cursor_col, BLACK);
+    placeStone(cursor_row, cursor_col, WHITE_STONE);
 };
 
 void
 Board::render(){
+
+  // Draw Background
   drawBitmap(65, 0, board_background);
+  
+  // Draw Cursor
   if(cursor_color == BLACK)
-    arduboy.fillRect(65 + 7 * cursor_col, 57 - 7 * cursor_row, 6, 6, BLACK);
+    arduboy.fillRect(66+7*cursor_col, 57-7*cursor_row, 6, 6, BLACK);
+
+  // Draw Stones
+  for(int r=0; r<size; r++){
+    for(int c=0; c<size; c++){
+      if(points[r][c] & WHITE_STONE){
+          arduboy.drawRect(67+7*c, 58-7*r, 4, 4, BLACK);
+      }
+      else if(points[r][c] & BLACK_STONE){
+          arduboy.fillRect(67+7*c, 58-7*r, 4, 4, BLACK);
+      }
+    }
+  }
 }
+
+void 
+Board::dump(){
+  for(int c=0; c < size; c++){
+    for(int r=size-1; r >= 0; r--){
+      uint8_t pt = points[r][c];
+      if(pt & WHITE_STONE)
+          Serial.print(" W");
+      else if(pt & BLACK_STONE)
+          Serial.print(" B");
+      else
+        Serial.print(" .");
+    }
+    Serial.println();
+  }
+}
+
+void 
+Board::clear(){
+  for(int r=0; r<size; r++){
+    for(int c=0; c<size; c++){
+      removeStone(r,c);
+    }
+  }
+}
+
 
 
 
