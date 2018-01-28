@@ -1,5 +1,6 @@
 #include "ArduGo.h"
 #include "sidebar.h"
+#include "assets.h"
 
 /*
  *  File: sidebar.cpp
@@ -23,26 +24,26 @@ render_sidebar(sidebar_t sidebar){
     case STATS_SIDEBAR:
       arduboy.setCursor(0,0);
       arduboy.setTextSize(2);
-      arduboy.println("Game");
+      arduboy.println(strings[STR_Game]);
       arduboy.setTextSize(1);
-      arduboy.print("\nBlack:");
+      arduboy.print(strings[STR_Black]);
       arduboy.println(black_score);
-      arduboy.print("\nWhite:");
+      arduboy.print(strings[STR_White]);
       arduboy.println(black_score);
       break;
 
     case TITLE_SIDEBAR:
       arduboy.setCursor(0,0);
       arduboy.setTextSize(2);
-      arduboy.println("Modus");
+      arduboy.println(strings[STR_Modus]);
       arduboy.setTextSize(1);
-      arduboy.println("ArduGo");
+      arduboy.println(strings[STR_ArduGo]);
       break;
 
     case MSG_SIDEBAR:
       arduboy.setCursor(0,0);
       arduboy.setTextSize(2);
-      arduboy.println("Hello");
+      arduboy.println(strings[STR_Hello]);
       arduboy.setTextSize(1);
       arduboy.println("");
       if(!player_msg)

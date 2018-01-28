@@ -1,6 +1,33 @@
 #ifndef ASSETS_H
 #define ASSETS_H
 
+PROGMEM const char strings[] = {
+  "Modus"   //0
+  "ArduGo"  //1
+  "Game"    //2
+  "Black"   //3
+  "White"   //4
+  "Hello"   //5
+  "" //6
+  "" //7
+  "" //8
+  "" //9
+  "" //10
+  "" //11
+  "" //12
+  "" //13
+  "" //14
+  "" //15
+};
+
+const int STR_Modus   = 0;
+const int STR_ArduGo  = 1;
+const int STR_Game    = 2;
+const int STR_Black   = 3;
+const int STR_White   = 4;
+const int STR_Hello   = 5;
+
+
 // board_background.png
 // 64x64
 PROGMEM const unsigned char board_background[] = {
