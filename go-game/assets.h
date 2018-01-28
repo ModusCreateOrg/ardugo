@@ -23,6 +23,8 @@ PROGMEM const char* const strings[] = {
 "print-vars",                  //18
 "print-board",                 //19
 "place-stone",                 //20
+"Black ",                      //21
+"White ",                      //22
 };
 
 const int STR_Modus   = 0;
@@ -41,12 +43,14 @@ const int STR_OK                    = 12;
 const int STR_InvalidColor          = 13;
 const int STR_ThePointIsNotEmpty    = 14;
 const int STR_TooFewArgs            = 15;
-
 const int STR_dump_vars             = 16;
 const int STR_dump_board            = 17;
 const int STR_print_vars            = 18;
 const int STR_print_board           = 19;
 const int STR_place_stone           = 20;
+const int STR_Black_                = 21;
+const int STR_White_                = 22;
+
 
 
 // board_background.png

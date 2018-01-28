@@ -27,10 +27,10 @@ render_sidebar(sidebar_t sidebar){
       arduboy.println(strings[STR_Game]);
       arduboy.setTextSize(1);
       arduboy.println();
-      arduboy.print(strings[STR_Black]);
+      arduboy.print(strings[STR_Black_]);
       arduboy.println(black_score);
       arduboy.println();
-      arduboy.print(strings[STR_White]);
+      arduboy.print(strings[STR_White_]);
       arduboy.println(black_score);      
       break;
 

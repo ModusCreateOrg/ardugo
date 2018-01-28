@@ -1,0 +1,58 @@
+\hypertarget{struct_board}{}\section{Board Struct Reference}
+\label{struct_board}\index{Board@{Board}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_board_affa1df63ffb36c8b836a81f7b40fc7f2}\label{struct_board_affa1df63ffb36c8b836a81f7b40fc7f2}} 
+typedef uint8\+\_\+t {\bfseries point\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_board_a6ca77471cf4df32ec4ea1da795065327}\label{struct_board_a6ca77471cf4df32ec4ea1da795065327}} 
+void {\bfseries render} ()
+\item 
+\mbox{\Hypertarget{struct_board_af74f0d4b43e5aa3faea16d7c6407b05e}\label{struct_board_af74f0d4b43e5aa3faea16d7c6407b05e}} 
+void {\bfseries clear} ()
+\item 
+\mbox{\Hypertarget{struct_board_aecaa74411a0ca7ba6703bbb716f43d8e}\label{struct_board_aecaa74411a0ca7ba6703bbb716f43d8e}} 
+void {\bfseries loop} ()
+\item 
+\mbox{\Hypertarget{struct_board_a0fa6a1338026b165e880e7ab322bf8aa}\label{struct_board_a0fa6a1338026b165e880e7ab322bf8aa}} 
+void {\bfseries dump} ()
+\item 
+\mbox{\Hypertarget{struct_board_a44c7bca1c10c053898c048dc4c13f0d5}\label{struct_board_a44c7bca1c10c053898c048dc4c13f0d5}} 
+void {\bfseries print} ()
+\item 
+\mbox{\Hypertarget{struct_board_a9d097e275bb3adff2197cffd56e91900}\label{struct_board_a9d097e275bb3adff2197cffd56e91900}} 
+int {\bfseries is\+Empty} (int row, int col)
+\item 
+\mbox{\Hypertarget{struct_board_ae8b790d2df7f363a7b57dffd2368c2f9}\label{struct_board_ae8b790d2df7f363a7b57dffd2368c2f9}} 
+void {\bfseries set\+Cursor} (int row, int col)
+\item 
+\mbox{\Hypertarget{struct_board_a9d61ff52990c23d5b688a3e29ae774b5}\label{struct_board_a9d61ff52990c23d5b688a3e29ae774b5}} 
+void {\bfseries place\+Stone} (int row, int col, point\+\_\+t color)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_board_ae0bb0088207d143f51e1904949bc67cb}\label{struct_board_ae0bb0088207d143f51e1904949bc67cb}} 
+const point\+\_\+t {\bfseries W\+H\+I\+T\+E\+\_\+\+S\+T\+O\+NE} = 0x01
+\item 
+\mbox{\Hypertarget{struct_board_a0a08db92e8e9d6cf8130073d018b4428}\label{struct_board_a0a08db92e8e9d6cf8130073d018b4428}} 
+const point\+\_\+t {\bfseries B\+L\+A\+C\+K\+\_\+\+S\+T\+O\+NE} = 0x02
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_board_a93850e71a40327203e34c4ac6d824b3c}\label{struct_board_a93850e71a40327203e34c4ac6d824b3c}} 
+static const int {\bfseries size} = 9
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+go-\/game/Board.\+h\item 
+go-\/game/Board.\+cpp\item 
+go-\/game/move.\+cpp\item 
+go-\/game/validate.\+cpp\end{DoxyCompactItemize}
