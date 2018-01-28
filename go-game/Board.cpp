@@ -31,8 +31,8 @@ Board::execButtons(){
       tunes.tone(150, 100);
     }
     else{
-      move(cursor_row, cursor_col, BLACK_STONE);
       tunes.tone(2000, 100);
+      move(cursor_row, cursor_col, BLACK_STONE);
       row_col_t next;
       if(nextMove(WHITE_STONE, next)){
         move(next.row, next.col, WHITE_STONE);
@@ -83,8 +83,8 @@ Board::dump(){
 
 void 
 Board::print(){
-  for(int c=0; c < size; c++){
-    for(int r=size-1; r >= 0; r--){
+  for(int r=size-1; r >= 0; r--){
+    for(int c=0; c < size; c++){
 
       // stone
       if(isWhite(r,c))
@@ -109,6 +109,12 @@ Board::print(){
       // HASAIR
       if(hasAir(r,c))
         Serial.print("a");
+      else
+        Serial.print("_");
+
+      // VISITED
+      if(isVisited(r,c))
+        Serial.print("s");
       else
         Serial.print("_");
     }

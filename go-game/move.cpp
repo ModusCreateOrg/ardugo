@@ -24,6 +24,7 @@ Board::nextMove(point_t color, row_col_t &row_col){
 void
 Board::move(int row, int col, point_t color){
     placeStone(row, col, color);
+    clearMeta();
     Board::markHasAir();
     markCaptures(color, NULL);
     removeMarkedCaptures();
@@ -31,7 +32,61 @@ Board::move(int row, int col, point_t color){
 
 void 
 Board::markHasAir(){
+  int n;
+  do{
+    n = markHasAirOnce();
+  }while(n);
+}
 
+int 
+Board::markHasAirOnce(){
+  int cnt = 0;
+    for(int r=0; r<size; r++){
+      for(int c=0; c<size; c++){
+        point_t color = points[r][c] & ANY_STONE;
+        if(!color) continue;
+        if(points[r][c] & HAS_AIR) continue;
+        
+        point_t air_test = color | HAS_AIR;
+
+        if(r > 0){
+          point_t pt = points[r-1][c];
+          if((!(pt & ANY_STONE)) || ((pt & air_test) == air_test)){
+            cnt++;
+            points[r][c] |= HAS_AIR;
+            continue;
+          }
+        }
+
+        if(r < size-1){
+          point_t pt = points[r+1][c];
+          if((!(pt & ANY_STONE)) || ((pt & air_test) == air_test)){
+            cnt++;
+            points[r][c] |= HAS_AIR;
+            continue;
+          }
+        }
+
+        if(c > 0){
+          point_t pt = points[r][c-1];
+          if((!(pt & ANY_STONE)) || ((pt & air_test) == air_test)){
+            cnt++;
+            points[r][c] |= HAS_AIR;
+            continue;
+          }
+        }
+
+        if(c < size-1){
+          point_t pt = points[r][c+1];
+          if((!(pt & ANY_STONE)) || ((pt & air_test) == air_test)){
+            cnt++;
+            points[r][c] |= HAS_AIR;
+            continue;
+          }
+        }
+      }
+    }
+  return cnt;
 }
 
 
@@ -55,7 +110,7 @@ Board::markCaptures(point_t color, row_col_t *index){
 
 int 
 Board::checkCaptured(int row, int col, point_t color){
-  return 0;
+  return !isEmpty(row,col) && !hasAir(row, col);
 }
 
 void 

@@ -55,8 +55,8 @@ const point_t META_MASK   = 0x03;
 
 const point_t VALID_NEXT = 0x04;
 const point_t CAPTURED   = 0x08;
-const point_t HAS_AIR    = 0x0F;
-
+const point_t HAS_AIR    = 0x10;
+const point_t VISITED    = 0x20;
 
 void cursorUp()    {if(cursor_row < size-1) cursor_row++; else cursor_row = 0;}
 void cursorDown()  {if(cursor_row > 0) cursor_row--; else cursor_row = size-1;}
@@ -97,6 +97,9 @@ int hasAir(int row, int col){
 int isValid(int row, int col){
   return points[row][col] & VALID_NEXT ? 1 : 0;
 }
+int isVisited(int row, int col){
+  return points[row][col] & VISITED ? 1 : 0;
+}
 
 point_t *pointPtr(int row, int col){
   return &points[row][col];
@@ -119,6 +122,7 @@ int nextMove(point_t color, row_col_t &row_col);
 void move(int row, int col, point_t color);
 int markCaptures(point_t color, row_col_t *index);
 void markHasAir();
+int markHasAirOnce();
 void removeMarkedCaptures();
 int checkCaptured(int row, int col, point_t color);
 
