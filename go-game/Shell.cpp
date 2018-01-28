@@ -2,6 +2,7 @@
 #include "ArduGo.h"
 #include "Shell.h"
 #include "Board.h"
+#include "assets.h"
 
 /*
  *  File: Shell.cpp
@@ -11,20 +12,20 @@
 
 static void
 what(const char* msg){
-  Serial.print("What: ");
+  Serial.print(strings[STR_What]);
   Serial.println(msg);
 }
 
 static void
 what(const char* msg1, const char* msg2){
-  Serial.print("What: ");
+  Serial.print(strings[STR_What]);
   Serial.print(msg1);
   Serial.println(msg2);
 }
 
 static void
 what(const char* msg1, const char* msg2, const char* msg3){
-  Serial.print("What: ");
+  Serial.print(strings[STR_What]);
   Serial.print(msg1);
   Serial.print(msg2);
   Serial.println(msg3);
@@ -34,11 +35,11 @@ static int
 check_row(const char* arg){
   int row = strtol(arg, NULL, 10);
   if(row < 0){
-    what("The row is below zero: ", arg);
+    what(strings[STR_TheRowIsBelowZero], arg);
     return -1;
   }
   if(row >= board.size){
-    what("The row is above 8: ", arg);
+    what(strings[STR_TheRowIsAbove8], arg);
     return -1;
   }
   return row;
@@ -48,11 +49,11 @@ static int
 check_col(const char* arg){
   int col = strtol(arg, NULL, 10);
   if(col < 0){
-    what("The column is below zero: ", arg);
+    what(strings[STR_TheColumnIsBelowZero], arg);
     return -1;
   }
   if(col >= board.size){
-    what("The column is above 8: ", arg);
+    what(strings[STR_TheColumnIsAbove8], arg);
     return -1;
   }
   return col;
@@ -78,7 +79,7 @@ static void
 place_stone(int nargs, const char** argv){
   
   if(nargs < 4){
-    what("Too few args, needs 3!");
+    what(strings[STR_TooFewArgs]);
     return;
   }
 
@@ -92,10 +93,10 @@ place_stone(int nargs, const char** argv){
       else if(!strcmp(argv[3], "B"))
         board.placeStone(row, col, board.BLACK_STONE);
       else
-        what("Invalid color:", argv[3]);
+        what(strings[STR_InvalidColor], argv[3]);
     }
     else
-      what("The point is not empty: ", argv[1], argv[2]);
+      what(strings[STR_ThePointIsNotEmpty], argv[1], argv[2]);
   }
 }
 
@@ -104,7 +105,7 @@ static void
 get_mem(int nargs, const char** argv){
   
   if(nargs < 2){
-    what("Too few args, needs 1!");
+    what(strings[STR_TooFewArgs]);
     return;
   }
 
@@ -150,9 +151,9 @@ Shell::execSerial(){
       char line[33];
       line[Serial.readBytesUntil('\n', line, sizeof(line)-1)] = 0;
       if(exec(line) < 0)
-        Serial.println("ERROR");
+        Serial.println(strings[STR_ERROR]);
       else
-        Serial.println("OK");
+        Serial.println(strings[STR_OK]);
   }
 }
 

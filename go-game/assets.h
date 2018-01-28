@@ -2,22 +2,22 @@
 #define ASSETS_H
 
 PROGMEM const char strings[] = {
-  "Modus"   //0
-  "ArduGo"  //1
-  "Game"    //2
-  "Black"   //3
-  "White"   //4
-  "Hello"   //5
-  "" //6
-  "" //7
-  "" //8
-  "" //9
-  "" //10
-  "" //11
-  "" //12
-  "" //13
-  "" //14
-  "" //15
+  "Modus"                       //0
+  "ArduGo"                      //1
+  "Game"                        //2
+  "Black"                       //3
+  "White"                       //4
+  "Hello"                       //5
+  "What: "                      //6
+  "The row is below zero: "     //7
+  "The row is above 8: "        //8
+  "The column is below zero: "  //9
+  "The column is above 8: "     //10
+  "ERROR"                       //11
+  "OK"                          //12
+  "Invalid color:"              //13
+  "The point is not empty: "    //14
+  "Too few args!"               //15
 };
 
 const int STR_Modus   = 0;
@@ -26,7 +26,16 @@ const int STR_Game    = 2;
 const int STR_Black   = 3;
 const int STR_White   = 4;
 const int STR_Hello   = 5;
-
+const int STR_What    = 6;
+const int STR_TheRowIsBelowZero     = 7;
+const int STR_TheRowIsAbove8        = 8;
+const int STR_TheColumnIsBelowZero  = 9;
+const int STR_TheColumnIsAbove8     = 10;
+const int STR_ERROR                 = 11;
+const int STR_OK                    = 12;
+const int STR_InvalidColor          = 13;
+const int STR_ThePointIsNotEmpty    = 14;
+const int STR_TooFewArgs            = 15;
 
 // board_background.png
 // 64x64
