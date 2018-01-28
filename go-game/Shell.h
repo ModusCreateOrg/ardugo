@@ -41,10 +41,9 @@ void tokenize(char* line){
   }
 }
 
-
 };//Shell
 
-extern Shell shell;
+extern Shell *shell;
 
 
 

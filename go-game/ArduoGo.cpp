@@ -14,7 +14,7 @@ Arduboy arduboy;
 ArduboyTunes tunes;
 
 Board board;
-Shell shell;
+Shell *shell = NULL;
 
 uint8_t previousButtonState = 0;
 uint8_t currentButtonState = 0;
@@ -41,6 +41,9 @@ void
 ardugo_setup(){
   srand (time(NULL));
   board.clear();
+#if defined(ARDUGO_SHELL)
+  shell = new Shell();
+#endif
 }
 
 void 

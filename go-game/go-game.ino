@@ -10,17 +10,25 @@
  */
 
 void setup() {
-  Serial.begin(9600);
-  while (!Serial);
   arduboy.start();
   ardugo_setup();
+
+#if defined(ARDUGO_SHELL) || defined(ARDUGO_SERIAL) || defined(ARDUGO_DEBUG)
+  Serial.begin(9600);
+  Serial.println("Setup is finished.");
+#endif
+
 }
 
 void loop() {
   previousButtonState = currentButtonState;
   currentButtonState = arduboy.buttonsState();
 
-  shell.loop();
+#ifdef ARDUGO_SHELL
+  if(shell)
+    shell->loop();
+#endif
+
   board.loop();
   arduboy.clear();
   board.render();

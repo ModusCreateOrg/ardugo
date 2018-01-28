@@ -7,6 +7,10 @@
  *  Author: Don Anderson
  */
 
+#define ARDUGO_DEBUG
+#define ARDUGO_SHELL
+#define ARDUGO_SERIAL
+
 #include <Arduboy.h>
 
 extern Arduboy arduboy;
