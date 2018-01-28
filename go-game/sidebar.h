@@ -7,9 +7,11 @@
  *  Author: Don Anderson
  */
 
-const enum{
+enum{
   TITLE_SIDEBAR,
-  STAT_SIDEBAR
+  STAT_SIDEBAR,
+  YOUWIN_SIDEBAR,
+  GAMEWIN_SIDEBAR
 }
 typedef sidebar_t;
 

@@ -29,5 +29,3 @@ void loop() {
 
   injectButtonState = 0;
 }
-
-#include "sidebar.cpp"

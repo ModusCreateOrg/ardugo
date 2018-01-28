@@ -2,6 +2,7 @@
 #include "ArduGo.h"
 #include "Board.h"
 #include "assets.h"
+#include "sidebar.h"
 
 /*
  *  File: Board.cpp
@@ -43,6 +44,7 @@ Board::execButtons(){
   
   if (wasJustPressed(B_BUTTON)){
     clear();
+    cur_sidebar = TITLE_SIDEBAR;
   }
 
 };
