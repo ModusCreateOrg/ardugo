@@ -20,6 +20,17 @@ void
 render_sidebar(sidebar_t sidebar){
 
   switch(sidebar){
+    case STATS_SIDEBAR:
+      arduboy.setCursor(0,0);
+      arduboy.setTextSize(2);
+      arduboy.println("Game");
+      arduboy.setTextSize(1);
+      arduboy.print("\nBlack:");
+      arduboy.println(black_score);
+      arduboy.print("\nWhite:");
+      arduboy.println(black_score);
+      break;
+
     case TITLE_SIDEBAR:
       arduboy.setCursor(0,0);
       arduboy.setTextSize(2);

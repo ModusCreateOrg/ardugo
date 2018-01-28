@@ -39,12 +39,14 @@ Board::execButtons(){
         move(next.row, next.col, WHITE_STONE);
         setCursor(next.row, next.col);
       }
+      cur_sidebar = STATS_SIDEBAR;
     }
   } 
   
   if (wasJustPressed(B_BUTTON)){
     clear();
     cur_sidebar = TITLE_SIDEBAR;
+    black_score = white_score = 0;
   }
 
 };

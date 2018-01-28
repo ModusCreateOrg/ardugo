@@ -19,6 +19,8 @@ Shell *shell = NULL;
 uint8_t previousButtonState = 0;
 uint8_t currentButtonState = 0;
 uint8_t injectButtonState = 0;
+extern int black_score=0, white_score=0;
+
 
 void
 injectButton(uint8_t button){

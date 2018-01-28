@@ -17,6 +17,8 @@ extern uint8_t previousButtonState;
 extern uint8_t currentButtonState;
 extern uint8_t injectButtonState;
 
+extern int black_score, white_score;
+
 void injectButton(uint8_t button);
 int wasJustPressed(uint8_t button);
 
