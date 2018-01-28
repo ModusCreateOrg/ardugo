@@ -16,9 +16,9 @@ The shell is used to remotely control and monitor the application while it is ru
 
 Events injected using the shell will each activate in a different event loop. Multiple physical buttons may activate in one event loop, so the behavior is different.
 
-The board has nine columns and rows, and their argument values below range from 0 to 8. The address for the get-mem command is a 16-bit hexadecimal value with no leading '0x'. The second argument to the get-mem command is optional and will cast the memory location before encoding. If the integer types (i,l) are uppercase, they will render in hexadecimal.
+Since the board has nine columns and rows, their argument values below range from 0 to 8. The address for the get-mem command is a 16-bit hexadecimal value with no leading '0x'. The second argument to the get-mem command is optional and causes the memory to render as the type. If the integer types (i,l) are uppercase, they will render in hexadecimal.
 
-The interpreter eveluates these commands:
+The interpreter evaluates these commands:
 
 * dump-board
 * print-board

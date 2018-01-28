@@ -1,4 +1,3 @@
-
 #ifndef _ARGUGO_H_
 #define _ARGUGO_H_
 
@@ -9,9 +8,6 @@
  */
 
 #include <Arduboy.h>
-
-struct Game;
-struct Player;
 
 extern Arduboy arduboy;
 extern ArduboyTunes tunes;
@@ -26,6 +22,7 @@ int wasJustPressed(uint8_t button);
 void ardugo_setup();
 void dump_globals();
 void print_globals();
+void clear_stats();
 
 void
 drawBitmap(uint16_t x, uint16_t y, uint8_t *bitmap);

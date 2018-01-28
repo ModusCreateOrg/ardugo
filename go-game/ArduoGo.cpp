@@ -32,6 +32,11 @@ wasJustPressed(uint8_t button){
          ? 1 : 0;
 }
 
+void 
+clear_stats(){
+
+}
+
 void
 ardugo_setup(){
   srand (time(NULL));

@@ -1,6 +1,7 @@
 #include "ArduGo.h"
 #include "Shell.h"
 #include "Board.h"
+#include "sidebar.h"
 
 /*
  *  File: go-game.ino
@@ -23,7 +24,10 @@ void loop() {
   board.loop();
   arduboy.clear();
   board.render();
+  render_sidebar(cur_sidebar);
   arduboy.display();
 
   injectButtonState = 0;
 }
+
+#include "sidebar.cpp"
