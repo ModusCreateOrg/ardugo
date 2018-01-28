@@ -17,10 +17,10 @@ enum{
 typedef sidebar_t;
 
 extern sidebar_t cur_sidebar;
-extern const char *sidebar_msg;
+extern const char *player_msg;
 
 
 void render_sidebar(sidebar_t sidebar);
-void player_msg(const char* msg);
+void set_player_msg(const char* msg);
 
 #endif

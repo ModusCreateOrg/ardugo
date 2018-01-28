@@ -2,6 +2,7 @@
 #include "ArduGo.h"
 #include "Shell.h"
 #include "Board.h"
+#include "sidebar.h"
 #include <time.h>
 
 /*
@@ -49,11 +50,33 @@ ardugo_setup(){
 }
 
 void 
-dump_globals(){
+dump_vars(){
+  Serial.print("black_score,");Serial.print(black_score);
+  Serial.print(",white_score,");Serial.print(white_score);
+
+  Serial.print(",player_msg,");
+  Serial.print("\"");
+  if(player_msg){
+    Serial.print(player_msg);
+  }
+  Serial.print("\"");
+
+  Serial.println(""); 
 }
 
 void 
-print_globals(){
+print_vars(){
+  Serial.print("black_score: ");Serial.println(black_score);
+  Serial.print("white_score: ");Serial.println(white_score);
+
+  Serial.print("player_msg:  ");
+  Serial.print("\"");
+  if(player_msg){
+    Serial.print(player_msg);
+  }
+  Serial.print("\"");
+
+  Serial.println(""); 
 }
 
 void

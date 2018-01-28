@@ -168,8 +168,8 @@ Shell::exec(){
     switch(argv[0][0]){
 
       case 'd':
-        if(!strcmp(argv[0], "dump-globals"))
-          dump_globals();
+        if(!strcmp(argv[0], "dump-vars"))
+          dump_vars();
         else if(!strcmp(argv[0], "dump-board"))
           board.dump();
         else
@@ -177,8 +177,8 @@ Shell::exec(){
         break;
 
       case 'p':
-        if(!strcmp(argv[0], "print-globals"))
-          print_globals();
+        if(!strcmp(argv[0], "print-vars"))
+          print_vars();
         else if(!strcmp(argv[0], "print-board"))
           board.print();
         else if(!strcmp(argv[0], "place-stone"))

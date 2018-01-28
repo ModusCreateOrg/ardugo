@@ -22,6 +22,8 @@ The interpreter evaluates these commands:
 
 * dump-board
 * print-board
+* dump-vars
+* print-vars
 * place-stone row column (B|W)
 * clear-board
 * set-cursor row column

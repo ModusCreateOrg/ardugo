@@ -8,12 +8,12 @@
  */
 
 sidebar_t cur_sidebar = TITLE_SIDEBAR;
-static const char *sidebar_msg = NULL;
+static const char *player_msg = NULL;
 
 void 
-player_msg(const char* msg){
+set_player_msg(const char* msg){
   cur_sidebar = MSG_SIDEBAR;
-  sidebar_msg = msg;
+  player_msg = msg;
 }
 
 void 
@@ -45,10 +45,10 @@ render_sidebar(sidebar_t sidebar){
       arduboy.println("Hello");
       arduboy.setTextSize(1);
       arduboy.println("");
-      if(!sidebar_msg)
-        arduboy.println("Never mind.");
+      if(!player_msg)
+        arduboy.println("");
       else
-        arduboy.println(sidebar_msg);
+        arduboy.println(player_msg);
       break;
     }
 }
