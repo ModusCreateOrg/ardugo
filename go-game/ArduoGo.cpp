@@ -2,6 +2,7 @@
 #include "ArduGo.h"
 #include "Shell.h"
 #include "Board.h"
+#include <time.h>
 
 /*
  *  File: ArduGo.cpp
@@ -33,6 +34,7 @@ wasJustPressed(uint8_t button){
 
 void
 ardugo_setup(){
+  srand (time(NULL));
   board.clear();
 }
 
