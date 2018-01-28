@@ -8,7 +8,7 @@
  */
 
 #include <Arduboy.h>
-#include "local-defines.inc"
+#include "local-defines.h"
 
 extern Arduboy arduboy;
 extern ArduboyTunes tunes;
