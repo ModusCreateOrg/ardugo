@@ -7,11 +7,8 @@
  *  Author: Don Anderson
  */
 
-#define ARDUGO_DEBUG
-#define ARDUGO_SHELL
-#define ARDUGO_SERIAL
-
 #include <Arduboy.h>
+#include "local-defines.inc"
 
 extern Arduboy arduboy;
 extern ArduboyTunes tunes;
