@@ -37,6 +37,9 @@ The interpreter evaluates these commands:
 
 The automated test suite, written in Python, is used to test the application on the Arduboy using the shell over the serial connection. 
 
+![Modus ArduGo](https://raw.githubusercontent.com/ModusCreateOrg/go-arduboy-game/master/images/web/ModusCreat-ArduGo-1-MODUS-article-featured.jpg "Modus ArduGo")
+
+
 
 
 
