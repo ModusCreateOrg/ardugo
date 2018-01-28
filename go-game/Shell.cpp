@@ -169,20 +169,20 @@ Shell::exec(){
     switch(argv[0][0]){
 
       case 'd':
-        if(!strcmp(argv[0], "dump-vars"))
+        if(!strcmp(argv[0], strings[STR_dump_vars]))
           dump_vars();
-        else if(!strcmp(argv[0], "dump-board"))
+        else if(!strcmp(argv[0], strings[STR_dump_board]))
           board.dump();
         else
           what(argv[0]);
         break;
 
       case 'p':
-        if(!strcmp(argv[0], "print-vars"))
+        if(!strcmp(argv[0], strings[STR_print_vars]))
           print_vars();
-        else if(!strcmp(argv[0], "print-board"))
+        else if(!strcmp(argv[0], strings[STR_print_board]))
           board.print();
-        else if(!strcmp(argv[0], "place-stone"))
+        else if(!strcmp(argv[0], strings[STR_place_stone]))
           place_stone(nargs, argv);
         else
           what(argv[0]);

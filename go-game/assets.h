@@ -1,23 +1,28 @@
 #ifndef ASSETS_H
 #define ASSETS_H
 
-PROGMEM const char strings[] = {
-  "Modus"                       //0
-  "ArduGo"                      //1
-  "Game"                        //2
-  "Black"                       //3
-  "White"                       //4
-  "Hello"                       //5
-  "What: "                      //6
-  "The row is below zero: "     //7
-  "The row is above 8: "        //8
-  "The column is below zero: "  //9
-  "The column is above 8: "     //10
-  "ERROR"                       //11
-  "OK"                          //12
-  "Invalid color:"              //13
-  "The point is not empty: "    //14
-  "Too few args!"               //15
+PROGMEM const char* const strings[] = {
+"Modus",                       //0
+"ArduGo",                      //1
+"Game",                        //2
+"Black",                       //3
+"White",                       //4
+"Hello",                       //5
+"What: ",                      //6
+"The row is below zero: ",     //7
+"The row is above 8: ",        //8
+"The column is below zero: ",  //9
+"The column is above 8: ",     //10
+"ERROR",                       //11
+"OK",                          //12
+"Invalid color:",              //13
+"The point is not empty: ",    //14
+"Too few args!",               //15
+"dump-vars",                   //16
+"dump-board",                  //17
+"print-vars",                  //18
+"print-board",                 //19
+"place-stone",                 //20
 };
 
 const int STR_Modus   = 0;
@@ -36,6 +41,13 @@ const int STR_OK                    = 12;
 const int STR_InvalidColor          = 13;
 const int STR_ThePointIsNotEmpty    = 14;
 const int STR_TooFewArgs            = 15;
+
+const int STR_dump_vars             = 16;
+const int STR_dump_board            = 17;
+const int STR_print_vars            = 18;
+const int STR_print_board           = 19;
+const int STR_place_stone           = 20;
+
 
 // board_background.png
 // 64x64
