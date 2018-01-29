@@ -1,4 +1,4 @@
-# ArduGo
+# Modus ArduGo
 
 ArduGo is an implementation of a board for playing the game of Go. It is designed to run on the Arduboy game console.
 
@@ -52,16 +52,16 @@ The interpreter evaluates these commands:
 
 ## Development
 
-###ToDo
+### ToDo
 * Complete the rules for valid moves.
 * Add end-game detection and scoring.
 * Improve the algorithm for computer plays.
 
-###Resources
+### Resources
 The release build of the game uses 45% of the flash and 55% of the ram. That should be enough resources to implement an engaging algorithm for computer play on the small 9x9 board.
 
 
-###Exit the Shell
+### Exit the Shell
 The shell competes with the bootloader on the Arduino for characters coming in over the serial port and forces a developer to use the brick-reset procedure too often. Exiting the shell before uploading a new image eliminates the problem. Exiting the shell frees up some of its dynamic ram resources not as much as excluding it from the build. 
 
 
