@@ -118,7 +118,17 @@ Board::removeMarkedCaptures(){
   point_t *p = pointsBeg();
   point_t *e = pointsEnd();
   do{
-    if(*p & CAPTURED) *p &= ~ANY_STONE;
+    if(*p & CAPTURED){
+      if(*p & WHITE_STONE){
+        white_live--;
+        white_capt++;
+      }
+      else{
+        black_live--;
+        black_capt++;
+      }
+      *p &= ~ANY_STONE;
+    }
   } while(++p != e);
 
 }

@@ -3,6 +3,7 @@
 #include "Shell.h"
 #include "Board.h"
 #include "sidebar.h"
+#include "assets.h"
 #include <time.h>
 
 /*
@@ -20,7 +21,8 @@ Shell *shell = NULL;
 uint8_t previousButtonState = 0;
 uint8_t currentButtonState = 0;
 uint8_t injectButtonState = 0;
-extern int black_score=0, white_score=0;
+extern int black_live=0, white_live=0;
+extern int black_capt=0, white_capt=0;
 
 
 void
@@ -51,32 +53,44 @@ ardugo_setup(){
 
 void 
 dump_vars(){
-  Serial.print("black_score,");Serial.print(black_score);
-  Serial.print(",white_score,");Serial.print(white_score);
-
-  Serial.print(",player_msg,");
-  Serial.print("\"");
-  if(player_msg){
-    Serial.print(player_msg);
-  }
-  Serial.print("\"");
-
-  Serial.println(""); 
+  Serial.print(strings[STR_black_live]);
+  Serial.print(",");
+  Serial.print(black_live);
+  Serial.print(",");
+  
+  Serial.print(strings[STR_black_capt]);
+  Serial.print(",");
+  Serial.print(black_capt);
+  Serial.print(",");
+  
+  Serial.print(strings[STR_white_live]);
+  Serial.print(",");
+  Serial.print(white_live);
+  Serial.print(",");
+  
+  Serial.print(strings[STR_white_capt]);
+  Serial.print(",");
+  Serial.print(white_capt);
+  Serial.println(); 
 }
 
 void 
 print_vars(){
-  Serial.print("black_score: ");Serial.println(black_score);
-  Serial.print("white_score: ");Serial.println(white_score);
-
-  Serial.print("player_msg:  ");
-  Serial.print("\"");
-  if(player_msg){
-    Serial.print(player_msg);
-  }
-  Serial.print("\"");
-
-  Serial.println(""); 
+  Serial.print(strings[STR_black_live]);
+  Serial.print(": ");
+  Serial.println(black_live);
+  
+  Serial.print(strings[STR_black_capt]);
+  Serial.print(": ");
+  Serial.println(black_capt);
+  
+  Serial.print(strings[STR_white_live]);
+  Serial.print(": ");
+  Serial.println(white_live);
+  
+  Serial.print(strings[STR_white_capt]);
+  Serial.print(": ");
+  Serial.println(white_capt);
 }
 
 void

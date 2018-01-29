@@ -26,12 +26,21 @@ render_sidebar(sidebar_t sidebar){
       arduboy.setTextSize(2);
       arduboy.println(strings[STR_Game]);
       arduboy.setTextSize(1);
+      
       arduboy.println();
+
       arduboy.print(strings[STR_Black_]);
-      arduboy.println(black_score);
+      arduboy.println(black_live);
+      arduboy.print(strings[STR_Capt_]);
+      arduboy.println(white_capt);
+
       arduboy.println();
+      
       arduboy.print(strings[STR_White_]);
-      arduboy.println(black_score);      
+      arduboy.println(white_live);
+      arduboy.print(strings[STR_Capt_]);
+      arduboy.println(black_capt);
+
       break;
 
     case TITLE_SIDEBAR:

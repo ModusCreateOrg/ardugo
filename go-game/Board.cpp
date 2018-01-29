@@ -46,9 +46,10 @@ Board::execButtons(){
   if (wasJustPressed(B_BUTTON)){
     clear();
     cur_sidebar = TITLE_SIDEBAR;
-    black_score = white_score = 0;
+    black_live = black_capt = 0;
+    white_live = white_capt = 0;
   }
-
+  
 };
 
 void

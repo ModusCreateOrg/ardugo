@@ -8,7 +8,17 @@ You make the first play by moving the cursor with the arrow keys and pressing th
 
 The game will respond by placing a white stone on the board and then it is your turn again. You continue to alternate turns until one player wins.
 
+For each player, two scores update on the game display. The one to the right of the player color is the number of living stones. Just below the is the count of prisoners that player has captured.
+
 Pressing the "B" button restarts the game.
+
+# ToDo
+
+* Complete the rules for valid moves.
+* Add end-game detection and scoring.
+* Improve the algorithm for computer plays.
+
+The release build of the game uses 45% of the flash and 55% of the ram. That should be enough resources to implement an engaging algorithm for computer play on the small 9x9 board. 
 
 # Serial Shell
 
@@ -40,6 +50,8 @@ The interpreter evaluates these commands:
 The automated test suite, written in Python, is used to test the application on the Arduboy using the shell over the serial connection. 
 
 ![Modus ArduGo](https://raw.githubusercontent.com/ModusCreateOrg/go-arduboy-game/master/images/web/ModusCreat-ArduGo-1-MODUS-article-featured.jpg "Modus ArduGo")
+
+ 
 
 
 

@@ -37,6 +37,10 @@ void setCursor(int row, int col){
 
 void placeStone(int row, int col, point_t color){
   points[row][col] = color;
+  if(color == WHITE_STONE)
+    white_live++;
+  else
+    black_live++;
 }
 
 

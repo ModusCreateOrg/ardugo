@@ -9,22 +9,28 @@ PROGMEM const char* const strings[] = {
 "White",                       //4
 "Hello",                       //5
 "What: ",                      //6
-"The row is below zero: ",     //7
-"The row is above 8: ",        //8
-"The column is below zero: ",  //9
-"The column is above 8: ",     //10
-"ERROR",                       //11
-"OK",                          //12
-"Invalid color:",              //13
-"The point is not empty: ",    //14
-"Too few args!",               //15
-"dump-vars",                   //16
-"dump-board",                  //17
-"print-vars",                  //18
-"print-board",                 //19
-"place-stone",                 //20
-"Black ",                      //21
-"White ",                      //22
+"The row is below zero: ",      //7
+"The row is above 8: ",         //8
+"The column is below zero: ",   //9
+"The column is above 8: ",      //10
+"ERROR",                        //11
+"OK",                           //12
+"Invalid color:",               //13
+"The point is not empty: ",     //14
+"Too few args!",                //15
+"dump-vars",                    //16
+"dump-board",                   //17
+"print-vars",                   //18
+"print-board",                  //19
+"place-stone",                  //20
+"Black ",                       //21
+"White ",                       //22
+"black-live",                   //23
+"white-live",                   //24
+"black-capt",                   //25
+"white-capt",                   //26
+" live ",                       //27
+" capt ",                       //28
 };
 
 const int STR_Modus   = 0;
@@ -50,6 +56,12 @@ const int STR_print_board           = 19;
 const int STR_place_stone           = 20;
 const int STR_Black_                = 21;
 const int STR_White_                = 22;
+const int STR_black_live            = 23;
+const int STR_white_live            = 24;
+const int STR_black_capt            = 25;
+const int STR_white_capt            = 26;
+const int STR_Live_                 = 27;
+const int STR_Capt_                 = 28;
 
 
 

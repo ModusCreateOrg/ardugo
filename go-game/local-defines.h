@@ -1,4 +1,4 @@
 
-#define ARDUGO_DEBUG
-#define ARDUGO_SHELL
-#define ARDUGO_SERIAL
+//#define ARDUGO_DEBUG
+//#define ARDUGO_SHELL
+//#define ARDUGO_SERIAL
