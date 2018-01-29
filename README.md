@@ -16,22 +16,22 @@ Pressing the "B" button restarts the game.
 
 # Technical
 
-## Automated Testing
+### Automated Testing
 
 The automated test suite, written in Python, is used to test the application on the Arduboy using the shell over the serial connection. 
 
-## Serial Shell
+### Serial Shell
 
-### Remote Control
+#### Remote Control
 The shell is used to remotely control and monitor the application while it is running on the Arduboy. It communicates over the serial connection, helps find defects during development, and supports automated testing. The interpreter polls one command-line on each iteration of the event loop.  
 
-### Events
+#### Events
 Events injected using the shell will each activate in a different event loop. Multiple physical buttons may activate in one event loop, so the behavior is different.
 
-### Arguments
+#### Arguments
 Since the board has nine columns and rows, their argument values below range from 0 to 8. The address for the get-mem command is a 16-bit hexadecimal value with no leading '0x'. The second argument to the get-mem command is optional and causes the memory to render as the type. If the integer types (i,l) are uppercase, they will render in hexadecimal.
 
-### Commands
+#### Commands
 The interpreter evaluates these commands:
 
 * exit
@@ -50,18 +50,18 @@ The interpreter evaluates these commands:
 * button-B
 * get-mem address [(i|l|f|d)]
 
-## Development
+### Development
 
-### ToDo
+#### ToDo
 * Complete the rules for valid moves.
 * Add end-game detection and scoring.
 * Improve the algorithm for computer plays.
 
-### Resources
+#### Resources
 The release build of the game uses 45% of the flash and 55% of the ram. That should be enough resources to implement an engaging algorithm for computer play on the small 9x9 board.
 
 
-### Exit the Shell
+#### Exit the Shell
 The shell competes with the bootloader on the Arduino for characters coming in over the serial port and forces a developer to use the brick-reset procedure too often. Exiting the shell before uploading a new image eliminates the problem. Exiting the shell frees up some of its dynamic ram resources not as much as excluding it from the build. 
 
 
