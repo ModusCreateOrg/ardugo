@@ -8,7 +8,7 @@ You make the first play by moving the cursor with the arrow keys and pressing th
 
 The game will respond by placing a white stone on the board and then it is your turn again. You continue to alternate turns until one player wins.
 
-For each player, two scores update on the game display. The one to the right of the player color is the number of living stones. Just below the is the count of prisoners that player has captured.
+For each player, two scores update on the game display. The one to the right of the player color is the number of living stones. Just below is the count of prisoners that player has captured.
 
 Pressing the "B" button restarts the game.
 
