@@ -1,5 +1,5 @@
     # Modus ArduGo
-Inspired by [Evade](https://moduscreate.com/blog/announcing-evade-our-first-arduboy-game/), ArduGo implements a board for playing the game of Go. It is designed to run on the Arduboy game console.
+Inspired by [EVADE](https://moduscreate.com/blog/announcing-evade-our-first-arduboy-game/), ArduGo implements a board for playing the game of Go. It is designed to run on the Arduboy game console.
 
 The board has nine columns and rows, which is the right size for learning to play Go, and for fitting into the Arduino's limited resources.
 
@@ -29,26 +29,27 @@ Since the board has nine columns and rows, their argument values below range fro
 The interpreter evaluates these commands:
 
 * exit
+* print-sys
 * dump-board
 * print-board
 * dump-vars
 * print-vars
-* place-stone row column (B|W)
+* place-stone row column (b|w)
 * clear-board
 * set-cursor row column
 * button-up
 * button-down
 * button-left
 * button-right
-* button-A
-* button-B
+* button-a
+* button-b
 * get-mem address [(i|l|f|d)]
 
 # Development
 The release build of the game uses 45% of the flash and 55% of the ram. There should be enough remaining resources to implement an engaging algorithm for computer play on the small 9x9 board.
 
 ### Exit the Shell
-The shell competes with the bootloader on the Arduino for characters coming in over the serial port and forces a developer to use the brick-reset procedure too often. Exiting the shell before uploading a new image eliminates the problem. Exiting the shell frees up some of its dynamic ram resources not as much as excluding it from the build. 
+The shell can compete with the bootloader on the Arduino for the serial port and forces a developer to use the brick-reset procedure too often. Exiting the shell before uploading a new image reduces the problem.
 
 ### ToDo
 * Complete the rules for valid moves.

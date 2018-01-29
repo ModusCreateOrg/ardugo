@@ -10,7 +10,6 @@
 
 struct Board{
 
-
 typedef uint8_t point_t;
 const point_t WHITE_STONE = 0x01;
 const point_t BLACK_STONE = 0x02;

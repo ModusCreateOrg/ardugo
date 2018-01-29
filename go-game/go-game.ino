@@ -9,13 +9,18 @@
  *  Author: Don Anderson
  */
 
+#if defined(ARDUGO_SHELL)
+  Shell shell;
+#endif
+
 void setup() {
+
   arduboy.start();
   ardugo_setup();
 
-#if defined(ARDUGO_SHELL) || defined(ARDUGO_SERIAL) || defined(ARDUGO_DEBUG)
+#if defined(ARDUGO_SHELL)
   Serial.begin(9600);
-  Serial.println("Setup is finished.");
+  Shell shell;
 #endif
 
 }
@@ -24,12 +29,13 @@ void loop() {
   previousButtonState = currentButtonState;
   currentButtonState = arduboy.buttonsState();
 
-#ifdef ARDUGO_SHELL
-  if(shell)
-    shell->loop();
-  if(exit_shell){
-    delete shell;
-    shell = NULL;
+#if defined(ARDUGO_SHELL)
+  if(!stop_shell){
+    shell.loop();
+    if(exit_shell){
+      stop_shell = T;
+      Serial.end();
+    }
   }
 #endif
 
