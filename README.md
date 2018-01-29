@@ -45,7 +45,7 @@ The interpreter evaluates these commands:
 * get-mem address [(i|l|f|d)]
 
 # Development
-The release build of the game uses 45% of the flash and 55% of the ram. That should be enough resources to implement an engaging algorithm for computer play on the small 9x9 board.
+The release build of the game uses 45% of the flash and 55% of the ram. There should be enough remaining resources to implement an engaging algorithm for computer play on the small 9x9 board.
 
 
 ### Exit the Shell
