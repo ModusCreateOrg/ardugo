@@ -1,5 +1,4 @@
 # Modus ArduGo
-
 ArduGo is an implementation of a board for playing the game of Go. It is designed to run on the Arduboy game console.
 
 The board has nine columns and rows, which is the right size for learning to play Go, and for fitting into the Arduino's limited resources.
@@ -15,14 +14,9 @@ Pressing the "B" button restarts the game.
 ![Modus ArduGo](https://raw.githubusercontent.com/ModusCreateOrg/go-arduboy-game/master/images/web/ModusCreat-ArduGo-1-MODUS-article-featured.jpg "Modus ArduGo")
 
 # Technical
-
-### Automated Testing
-
-The automated test suite, written in Python, is used to test the application on the Arduboy using the shell over the serial connection. 
+ArduGo contains an optional command shell for developers and external automated testing. The project includes an automated test suite, written in Python, primarily for testing the game rules and heuristics. 
 
 ### Serial Shell
-
-#### Remote Control
 The shell is used to remotely control and monitor the application while it is running on the Arduboy. It communicates over the serial connection, helps find defects during development, and supports automated testing. The interpreter polls one command-line on each iteration of the event loop.  
 
 #### Events
@@ -50,19 +44,19 @@ The interpreter evaluates these commands:
 * button-B
 * get-mem address [(i|l|f|d)]
 
-### Development
+# Development
+The release build of the game uses 45% of the flash and 55% of the ram. That should be enough resources to implement an engaging algorithm for computer play on the small 9x9 board.
 
-#### ToDo
+
+### Exit the Shell
+The shell competes with the bootloader on the Arduino for characters coming in over the serial port and forces a developer to use the brick-reset procedure too often. Exiting the shell before uploading a new image eliminates the problem. Exiting the shell frees up some of its dynamic ram resources not as much as excluding it from the build. 
+
+### ToDo
 * Complete the rules for valid moves.
 * Add end-game detection and scoring.
 * Improve the algorithm for computer plays.
 
-#### Resources
-The release build of the game uses 45% of the flash and 55% of the ram. That should be enough resources to implement an engaging algorithm for computer play on the small 9x9 board.
 
-
-#### Exit the Shell
-The shell competes with the bootloader on the Arduino for characters coming in over the serial port and forces a developer to use the brick-reset procedure too often. Exiting the shell before uploading a new image eliminates the problem. Exiting the shell frees up some of its dynamic ram resources not as much as excluding it from the build. 
 
 
  
