@@ -202,6 +202,13 @@ Shell::exec(){
           what(argv[0]);
         break;
 
+      case 'e':
+        if(!strcmp(argv[0], "exit"))
+          exit_shell = T;
+        else
+          what(argv[0]);
+        break;
+
       case 'b':
         if(!strcmp(argv[0], "button-up"))
           injectButton(UP_BUTTON);

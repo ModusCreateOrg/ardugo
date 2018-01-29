@@ -21,9 +21,9 @@ Shell *shell = NULL;
 uint8_t previousButtonState = 0;
 uint8_t currentButtonState = 0;
 uint8_t injectButtonState = 0;
-extern int black_live=0, white_live=0;
-extern int black_capt=0, white_capt=0;
-
+uint8_t black_live=0, white_live=0;
+uint8_t black_capt=0, white_capt=0;
+bool_t  exit_shell = F; 
 
 void
 injectButton(uint8_t button){

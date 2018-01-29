@@ -27,6 +27,10 @@ void loop() {
 #ifdef ARDUGO_SHELL
   if(shell)
     shell->loop();
+  if(exit_shell){
+    delete shell;
+    shell = NULL;
+  }
 #endif
 
   board.loop();

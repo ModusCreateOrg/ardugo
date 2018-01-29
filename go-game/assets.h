@@ -31,6 +31,7 @@ PROGMEM const char* const strings[] = {
 "white-capt",                   //26
 " live ",                       //27
 " capt ",                       //28
+"exit",                         //29
 };
 
 const int STR_Modus   = 0;
@@ -62,6 +63,7 @@ const int STR_black_capt            = 25;
 const int STR_white_capt            = 26;
 const int STR_Live_                 = 27;
 const int STR_Capt_                 = 28;
+const int STR_exit                  = 29;
 
 
 

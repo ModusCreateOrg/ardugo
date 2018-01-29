@@ -86,23 +86,23 @@ void removeStone(int row, int col){
   points[row][col] = 0;
 }
 
-int isWhite(int row, int col){
-  return points[row][col] & WHITE_STONE ? 1 : 0;
+bool_t isWhite(int row, int col){
+  return points[row][col] & WHITE_STONE ? T : F;
 }
-int isBlack(int row, int col){
-  return points[row][col] & BLACK_STONE ? 1 : 0;
+bool_t isBlack(int row, int col){
+  return points[row][col] & BLACK_STONE ? T : F;
 }
-int isCaptured(int row, int col){
-  return points[row][col] & CAPTURED ? 1 : 0;
+bool_t isCaptured(int row, int col){
+  return points[row][col] & CAPTURED ? T : F;
 }
-int hasAir(int row, int col){
-  return points[row][col] & HAS_AIR ? 1 : 0;
+bool_t hasAir(int row, int col){
+  return points[row][col] & HAS_AIR ? T : F;
 }
-int isValid(int row, int col){
-  return points[row][col] & VALID_NEXT ? 1 : 0;
+bool_t isValid(int row, int col){
+  return points[row][col] & VALID_NEXT ? T : F;
 }
-int isVisited(int row, int col){
-  return points[row][col] & VISITED ? 1 : 0;
+bool_t isVisited(int row, int col){
+  return points[row][col] & VISITED ? T : F;
 }
 
 point_t *pointPtr(int row, int col){

@@ -10,15 +10,21 @@
 #include "local-defines.h"
 #include <Arduboy.h>
 
+typedef uint8_t bool_t;
+const bool_t T = 1;
+const bool_t F = 0;
+
+
 extern Arduboy arduboy;
 extern ArduboyTunes tunes;
 
 extern uint8_t previousButtonState;
 extern uint8_t currentButtonState;
 extern uint8_t injectButtonState;
+extern bool_t  exit_shell; 
 
-extern int black_live, white_live;
-extern int black_capt, white_capt;
+extern uint8_t black_live, white_live;
+extern uint8_t black_capt, white_capt;
 
 void injectButton(uint8_t button);
 int wasJustPressed(uint8_t button);
