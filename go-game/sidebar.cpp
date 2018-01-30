@@ -17,14 +17,6 @@ set_player_msg(const char* msg){
   player_msg = msg;
 }
 
-PROGMEM const char* const STR_Game    = "Game";
-PROGMEM const char* const STR_Black   = "Black ";
-PROGMEM const char* const STR_White   = "White ";
-PROGMEM const char* const STR_Capt    = " capt ";
-PROGMEM const char* const STR_Modus   = "Modus";
-PROGMEM const char* const STR_ArduGo  = "ArduGo";
-PROGMEM const char* const STR_Hello   = "Hello";
-
 void 
 render_sidebar(sidebar_t sidebar){
 
@@ -32,21 +24,21 @@ render_sidebar(sidebar_t sidebar){
     case STATS_SIDEBAR:
       arduboy.setCursor(0,0);
       arduboy.setTextSize(2);
-      arduboy.println(STR_Game);
+      arduboy.println(F("Game"));
       arduboy.setTextSize(1);
       
       arduboy.println();
 
-      arduboy.print(STR_Black);
+      arduboy.print(F("Black "));
       arduboy.println(black_live);
-      arduboy.print(STR_Capt);
+      arduboy.print(F(" capt "));
       arduboy.println(white_capt);
 
       arduboy.println();
       
-      arduboy.print(STR_White);
+      arduboy.print(F("White "));
       arduboy.println(white_live);
-      arduboy.print(STR_Capt);
+      arduboy.print(F(" capt "));
       arduboy.println(black_capt);
 
       break;
@@ -54,15 +46,15 @@ render_sidebar(sidebar_t sidebar){
     case TITLE_SIDEBAR:
       arduboy.setCursor(0,0);
       arduboy.setTextSize(2);
-      arduboy.println(STR_Modus);
+      arduboy.println(F("Modus"));
       arduboy.setTextSize(1);
-      arduboy.println(STR_ArduGo);
+      arduboy.println(F("ArduGo"));
       break;
 
     case MSG_SIDEBAR:
       arduboy.setCursor(0,0);
       arduboy.setTextSize(2);
-      arduboy.println(STR_Hello);
+      arduboy.println(F("Hello"));
       arduboy.setTextSize(1);
       arduboy.println();
       if(!player_msg)

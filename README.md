@@ -46,7 +46,7 @@ The interpreter evaluates these commands:
 * get-mem address [(i|l|f|d)]
 
 # Development
-The release build of the game uses 45% of the flash and 55% of the ram. There should be enough remaining resources to implement an engaging algorithm for computer play on the small 9x9 board.
+The release build of the game uses 45% of the flash and 53% of the ram. There should be enough remaining resources to implement an engaging algorithm for computer play on the small 9x9 board.
 
 ### Exit the Shell
 The shell can compete with the bootloader on the Arduino for the serial port and forces a developer to use the brick-reset procedure too often. Exiting the shell before uploading a new image reduces the problem.

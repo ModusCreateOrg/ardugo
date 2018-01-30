@@ -80,7 +80,7 @@ Board::dump(){
   point_t *p = pointsBeg();
   point_t *e = pointsEnd();
   while(p != e){
-    if(*p < 0x10) Serial.print("0");
+    if(*p < 0x10) Serial.print('0');
     Serial.print(*p++, HEX);
   }
   Serial.println();
@@ -93,35 +93,35 @@ Board::print(){
 
       // stone
       if(isWhite(r,c))
-          Serial.print(" W");
+          Serial.print('W');
       else if(isBlack(r,c))
-          Serial.print(" B");
+          Serial.print('B');
       else
-        Serial.print(" .");
+        Serial.print(F(" ."));
 
       // ISVALID
       if(isValid(r,c))
-        Serial.print("v");
+        Serial.print('v');
       else
-        Serial.print("_");
+        Serial.print('_');
 
       // ISCAPTURED
       if(isCaptured(r,c))
-        Serial.print("c");
+        Serial.print('c');
       else
-        Serial.print("_");
+        Serial.print('_');
 
       // HASAIR
       if(hasAir(r,c))
-        Serial.print("a");
+        Serial.print('a');
       else
-        Serial.print("_");
+        Serial.print('_');
 
       // VISITED
       if(isVisited(r,c))
-        Serial.print("s");
+        Serial.print('s');
       else
-        Serial.print("_");
+        Serial.print('_');
     }
   Serial.println();
   }
