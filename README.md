@@ -1,5 +1,5 @@
 # Modus ArduGo
-Inspired by [EVADE](https://moduscreate.com/blog/announcing-evade-our-first-arduboy-game/), ArduGo implements a Go board with rules and heuristics for playing Go. It is designed to be forked and used to quickly create other games that use a goban, like GoBang. 
+Inspired by [EVADE](https://moduscreate.com/blog/announcing-evade-our-first-arduboy-game/), ArduGo implements a Go board with rules for playing Go. It is designed to be forked and used to quickly create other games that use a goban, like GoBang. 
 
 The board has nine columns and rows, which is the right size for learning to play Go, and for fitting into the Arduino's limited resources.
 
@@ -15,7 +15,7 @@ Pressing the "B" button restarts the game.
 
 
 # Technical
-ArduGo contains an optional command shell for developers and external automated testing. The project includes an automated test suite, written in Python, primarily for testing the game rules and heuristics. 
+ArduGo contains an optional command shell for developers and external automated testing. The project includes an automated test suite, written in Python, primarily for testing the game rules and play. 
 
 ### Serial Shell
 The interpreter polls one command-line on each iteration of the event loop. Events injected using the shell will activate in a different event loop. Multiple physical buttons may activate in one event loop, so the behavior is different.
