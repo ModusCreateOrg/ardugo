@@ -3,13 +3,13 @@ Inspired by [EVADE](https://moduscreate.com/blog/announcing-evade-our-first-ardu
 
 The board has nine columns and rows, which is the right size for learning to play Go, and for fitting into the Arduino's limited resources.
 
-You make the first play by moving the cursor with the arrow keys and pressing the "A"  button to place a black stone on the board.
+You make the first play by moving the cursor with the arrow keys and pressing the **A**  button to place a black stone on the board.
 
 The game will respond by placing a white stone on the board and then it is your turn again. You continue to alternate turns until one player wins.
 
 For each player, two scores update on the game display. The one to the right of the player color is the number of living stones. Just below is the count of prisoners that player has captured.
 
-Pressing the "B" button restarts the game.
+Pressing the **B** button restarts the game.
 
 ![Modus ArduGo](https://raw.githubusercontent.com/ModusCreateOrg/go-arduboy-game/master/images/web/ModusCreat-ArduGo-1-MODUS-article-featured.jpg "Modus ArduGo")
 
