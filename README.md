@@ -18,10 +18,7 @@ Pressing the "B" button restarts the game.
 ArduGo contains an optional command shell for developers and external automated testing. The project includes an automated test suite, written in Python, primarily for testing the game rules and heuristics. 
 
 ### Serial Shell
-The shell is used to remotely control and monitor the application while it is running on the Arduboy. It communicates over the serial connection, helps find defects during development, and supports automated testing. The interpreter polls one command-line on each iteration of the event loop.  
-
-#### Events
-Events injected using the shell will each activate in a different event loop. Multiple physical buttons may activate in one event loop, so the behavior is different.
+The interpreter polls one command-line on each iteration of the event loop. Events injected using the shell will activate in a different event loop. Multiple physical buttons may activate in one event loop, so the behavior is different.
 
 #### Arguments
 Since the board has nine columns and rows, their argument values below range from 0 to 8. The address for the get-mem command is a 16-bit hexadecimal value with no leading '0x'. The second argument to the get-mem command is optional and causes the memory to render as the type. If the integer types (i,l) are uppercase, they will render in hexadecimal.
