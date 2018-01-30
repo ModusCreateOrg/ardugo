@@ -8,19 +8,19 @@
  *  Author: Don Anderson
  */
 
-int
-Board::checkValid(int row, int col, point_t color){
+bool_t
+Board::checkValid(idx_t row, idx_t col, point_t color){
   if(!isEmpty(row, col))
-    return 0;
+    return F;
 
-  return 1;
+  return T;
 }
 
-int
+uint8_t
 Board::markValids(point_t color, row_col_t *index){
-  int cnt = 0;
-  for(int r=0; r<size; r++){
-    for(int c=0; c<size; c++){
+  uint8_t cnt = 0;
+  for(uint8_t r=0; r<size; r++){
+    for(uint8_t c=0; c<size; c++){
       if(checkValid(r, c, color)){
         points[r][c] |= VALID_NEXT;
         if(index){

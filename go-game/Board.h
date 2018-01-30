@@ -13,7 +13,9 @@ struct Board{
 typedef uint8_t point_t;
 const point_t WHITE_STONE = 0x01;
 const point_t BLACK_STONE = 0x02;
-static const int size = 9;
+
+typedef uint8_t idx_t;
+static const idx_t size = 9;
 
 Board(){
   clear();
@@ -25,16 +27,16 @@ void loop();
 void dump();
 void print();
 
-int isEmpty(int row, int col){
+bool_t isEmpty(idx_t row, idx_t col){
   return points[row][col] & ANY_STONE ? 0 : 1;
 }
 
-void setCursor(int row, int col){
+void setCursor(idx_t row, idx_t col){
   cursor_row = row;
   cursor_col = col;
 }
 
-void placeStone(int row, int col, point_t color){
+void placeStone(idx_t row, idx_t col, point_t color){
   points[row][col] = color;
   if(color == WHITE_STONE)
     white_live++;
@@ -45,7 +47,6 @@ void placeStone(int row, int col, point_t color){
 
 private:
 
-typedef uint8_t idx_t;
 struct {
   idx_t row, col;
 } typedef row_col_t;
@@ -77,34 +78,34 @@ point_t points[size][size];
 
 void execButtons();
 
-uint8_t getPoint(int row, int col){
+uint8_t getPoint(idx_t row, idx_t col){
   return points[row][col];
 }
 
-void removeStone(int row, int col){
+void removeStone(idx_t row, idx_t col){
   points[row][col] = 0;
 }
 
-bool_t isWhite(int row, int col){
+bool_t isWhite(idx_t row, idx_t col){
   return points[row][col] & WHITE_STONE ? T : F;
 }
-bool_t isBlack(int row, int col){
+bool_t isBlack(idx_t row, idx_t col){
   return points[row][col] & BLACK_STONE ? T : F;
 }
-bool_t isCaptured(int row, int col){
+bool_t isCaptured(idx_t row, idx_t col){
   return points[row][col] & CAPTURED ? T : F;
 }
-bool_t hasAir(int row, int col){
+bool_t hasAir(idx_t row, idx_t col){
   return points[row][col] & HAS_AIR ? T : F;
 }
-bool_t isValid(int row, int col){
+bool_t isValid(idx_t row, idx_t col){
   return points[row][col] & VALID_NEXT ? T : F;
 }
-bool_t isVisited(int row, int col){
+bool_t isVisited(idx_t row, idx_t col){
   return points[row][col] & VISITED ? T : F;
 }
 
-point_t *pointPtr(int row, int col){
+point_t *pointPtr(idx_t row, idx_t col){
   return &points[row][col];
 }
 
@@ -117,17 +118,17 @@ point_t *pointsEnd(){
 }
 
 // VALIDATION
-int markValids(point_t color, row_col_t *index);
-int checkValid(int row, int col, point_t color);
+uint8_t markValids(point_t color, row_col_t *index);
+bool_t checkValid(idx_t row, idx_t col, point_t color);
 
 // MOVE
-int nextMove(point_t color, row_col_t &row_col);
-void move(int row, int col, point_t color);
-int markCaptures(point_t color, row_col_t *index);
+uint8_t nextMove(point_t color, row_col_t &row_col);
+void move(idx_t row, idx_t col, point_t color);
+uint8_t markCaptures(point_t color, row_col_t *index);
 void markHasAir();
-int markHasAirOnce();
+uint8_t markHasAirOnce();
 void removeMarkedCaptures();
-int checkCaptured(int row, int col, point_t color);
+uint8_t checkCaptured(idx_t row, idx_t col, point_t color);
 
 };//Board
 

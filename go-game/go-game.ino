@@ -30,13 +30,7 @@ void loop() {
   currentButtonState = arduboy.buttonsState();
 
 #if defined(ARDUGO_SHELL)
-  if(!stop_shell){
     shell.loop();
-    if(exit_shell){
-      stop_shell = T;
-      Serial.end();
-    }
-  }
 #endif
 
   board.loop();
