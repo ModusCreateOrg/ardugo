@@ -67,9 +67,9 @@ place_stone(int nargs, const char** argv){
 
   if (row != -1 && col != -1){
     if(board.isEmpty(row, col)){
-      if(toupper(argv[3][0]) == 'W')
+      if(argv[3][0] == 'w')
         board.placeStone(row, col, board.WHITE_STONE);
-      if(toupper(argv[3][0]) == 'B')
+      if(argv[3][0] == 'b')
         board.placeStone(row, col, board.BLACK_STONE);
       else
         Serial.println(F("The stone color is invalid."));
@@ -201,7 +201,7 @@ Shell::exec(int nargs, const char **argv){
     else if(!strcmp(argv[0], "right"))
       injectButton(RIGHT_BUTTON);
 
-    else if(!strcmp(argv[0][0], "a"))
+    else if(!strcmp(argv[0], "a"))
       injectButton(A_BUTTON);
 
     else if(!strcmp(argv[0], "b"))
@@ -215,7 +215,7 @@ Shell::exec(int nargs, const char **argv){
       return F;
     }
   }//nargs
-  return F;
+  return T;
 }
 
 

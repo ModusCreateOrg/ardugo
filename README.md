@@ -1,5 +1,5 @@
 # Modus ArduGo
-Inspired by [EVADE](https://moduscreate.com/blog/announcing-evade-our-first-arduboy-game/), ArduGo implements a Go board with rules for playing Go. It is designed to be forked and quickly create other games that use a goban. 
+Inspired by [EVADE](https://moduscreate.com/blog/announcing-evade-our-first-arduboy-game/), ArduGo implements a 9x9 Go board with some simple rules. It is designed to be forked and create custom games that use a goban.
 
 The board has nine columns and rows, which is the right size for learning to play Go, and for fitting into the Arduino's limited resources.
 
@@ -13,17 +13,15 @@ Pressing the **B** button restarts the game.
 
 ![Modus ArduGo](https://raw.githubusercontent.com/ModusCreateOrg/go-arduboy-game/master/images/web/ModusCreat-ArduGo-1-MODUS-article-featured.jpg "Modus ArduGo")
 
+# Serial Shell
+ArduGo contains an optional command shell for developers and external automated testing. 
 
-# Technical
-ArduGo contains an optional command shell for developers and external automated testing. The project includes an automated test suite, written in Python, primarily for testing the game rules and play. 
-
-### Serial Shell
 The interpreter polls one command-line on each iteration of the event loop. Events injected using the shell will activate in a different event loop. Multiple physical buttons may activate in one event loop, so the behavior is different.
 
-#### Arguments
-Since the board has nine columns and rows, their argument values below range from 0 to 8. The address for the **mem** command is a 16-bit hexadecimal value with no leading **0x**. The second argument to the **mem** command is optional and causes the memory to render as the type. If the integer types **(i,l)** are uppercase, they will render in hexadecimal.
+### Arguments
+Since the board has nine columns and rows, their argument values below range from 0 to 8. The address for the **mem** command is a 16-bit hexadecimal value with no leading **0x**. The second argument to the **mem** command is optional and causes the memory to render as the type. If the integer types **(i,l)** are uppercase, they will dusplay in hexadecimal.
 
-#### Commands
+### Commands
 The interpreter evaluates these commands:
 
 * system
@@ -41,14 +39,6 @@ The interpreter evaluates these commands:
 * a
 * b
 * mem *address [(i|l|f|d)]*
-
-# Development
-The current release build uses 44% of the flash and 53% of the ram. There should be enough resources remaining to implement play heuristics that are engaging for beginning players.
-
-### ToDo
-* Complete the rules for valid moves.
-* Add end-game detection and scoring.
-* Improve the algorithm for computer plays.
 
 
 

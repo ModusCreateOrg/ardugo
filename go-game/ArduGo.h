@@ -7,7 +7,7 @@
  *  Author: Don Anderson
  */
 
-#include "local-defines.h"
+#include "defines-local.h"
 #include <Arduboy.h>
 
 PROGMEM const char* const version = "0.0";

@@ -8,19 +8,6 @@
  *  Author: Don Anderson
  */
 
-uint8_t
-Board::nextMove(point_t color, row_col_t &row_col){
-
-  clearMeta();
-
-  row_col_t index[size2];
-  uint8_t n = markValids(color, index);
-
-  if(n) row_col = index[rand()%n]; 
-
-  return n ? 1 : 0;
-}
-
 void
 Board::move(uint8_t row, uint8_t col, point_t color){
     placeStone(row, col, color);
@@ -130,6 +117,5 @@ Board::removeMarkedCaptures(){
       *p &= ~ANY_STONE;
     }
   } while(++p != e);
-
 }
 
