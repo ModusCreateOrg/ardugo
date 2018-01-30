@@ -30,21 +30,21 @@ Since the board has nine columns and rows, their argument values below range fro
 The interpreter evaluates these commands:
 
 * exit
-* print-sys
+* prnt-sys
 * dump-board
-* print-board
+* prnt-board
 * dump-vars
-* print-vars
-* place-stone row column (b|w)
-* clear-board
-* set-cursor row column
-* button-up
-* button-down
-* button-left
-* button-right
-* button-a
-* button-b
-* get-mem address [(i|l|f|d)]
+* prnt-vars
+* stone row column (b|w)
+* clear
+* cursor row column
+* up
+* down
+* left
+* right
+* a
+* b
+* mem address [(i|l|f|d)]
 
 # Development
 The release build of the game uses 45% of the flash and 53% of the ram. There should be enough remaining resources to implement an engaging algorithm for computer play on the small 9x9 board.

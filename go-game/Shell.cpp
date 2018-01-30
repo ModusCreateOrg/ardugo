@@ -159,83 +159,63 @@ Shell::exec(char* line){
   return exec(nargs, argv);
 }
 
-static bool_t
-what(){
-  Serial.println(F("What?"));
-  return F;
-}
-
 bool_t 
 Shell::exec(int nargs, const char **argv){
-  if(nargs){
-    switch(argv[0][0]){
+  if(!nargs){
+    Serial.println(F("What?"));
+    return F;
+  }else{
+    if(!strcmp(argv[0], "dump-vars"))
+      dump_vars();
 
-      case 'd':
-        if(!strcmp(argv[0], "dump-vars"))
-          dump_vars();
-        else if(!strcmp(argv[0], "dump-board"))
-          board.dump();
-        else
-          return what();
-        break;
+    else if(!strcmp(argv[0], "dump-board"))
+      board.dump();
 
-      case 'p':
-        if(!strcmp(argv[0], "print-vars"))
-          print_vars();
-        if(!strcmp(argv[0], "print-sys"))
-          print_sys();
-        else if(!strcmp(argv[0], "print-board"))
-          board.print();
-        else if(!strcmp(argv[0], "place-stone"))
-          place_stone(nargs, argv);
-        else
-          return what();
-        break;
+    else if(!strcmp(argv[0], "print-vars"))
+      print_vars();
 
-      case 'c':
-        if(!strcmp(argv[0], "clear-board"))
-          board.clear();
-        else
-          return what();
-        break;
+    else if(!strcmp(argv[0], "print-sys"))
+      print_sys();
 
-      case 's':
-        if(!strcmp(argv[0], "set-cursor"))
-          set_cursor(nargs, argv);
-        else
-          return what();
-        break;
+    else if(!strcmp(argv[0], "print-board"))
+      board.print();
 
-      case 'b':
-        if(!strcmp(argv[0], "button-up"))
-          injectButton(UP_BUTTON);
-        else if(!strcmp(argv[0], "button-down"))
-          injectButton(DOWN_BUTTON);
-        else if(!strcmp(argv[0], "button-left"))
-          injectButton(LEFT_BUTTON);
-        else if(!strcmp(argv[0], "button-right"))
-          injectButton(RIGHT_BUTTON);
-        else if(!strcmp(argv[0], "button-a"))
-          injectButton(A_BUTTON);
-        else if(!strcmp(argv[0], "button-b"))
-          injectButton(B_BUTTON);
-        else
-          return what();
-        break;
+    else if(!strcmp(argv[0], "place-stone"))
+      place_stone(nargs, argv);
 
-      case 'g':
-        if(!strcmp(argv[0], "get-mem"))
-          get_mem(nargs, argv);
-        else
-          return what();
-        break;
+    else if(!strcmp(argv[0], "clear-board"))
+      board.clear();
 
-      default:
-          return what();
-        break;
+    else if(!strcmp(argv[0], "set-cursor"))
+      set_cursor(nargs, argv);
+
+    else if(!strcmp(argv[0], "button-up"))
+      injectButton(UP_BUTTON);
+
+    else if(!strcmp(argv[0], "button-down"))
+      injectButton(DOWN_BUTTON);
+
+    else if(!strcmp(argv[0], "button-left"))
+      injectButton(LEFT_BUTTON);
+
+    else if(!strcmp(argv[0], "button-right"))
+      injectButton(RIGHT_BUTTON);
+
+    else if(!strcmp(argv[0], "button-a"))
+      injectButton(A_BUTTON);
+
+    else if(!strcmp(argv[0], "button-b"))
+      injectButton(B_BUTTON);
+
+    else if(!strcmp(argv[0], "get-mem"))
+      get_mem(nargs, argv);
+
+    else{
+      Serial.println(F("What?"));
+      return F;
     }
-
-  }
+  }//nargs
+  return F;
 }
 
 
