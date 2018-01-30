@@ -30,9 +30,9 @@ Since the board has nine columns and rows, their argument values below range fro
 The interpreter evaluates these commands:
 
 * system
-* dup-brd
+* dmp-brd
 * board
-* dup-vars
+* dmp-vars
 * vars
 * stone row column (b|w)
 * clear
