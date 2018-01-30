@@ -19,8 +19,8 @@ Shell::loop(){
 
 private: 
 
-int exec(char* line);
-int exec(int nargs, const char **argv);
+bool_t exec(char* line);
+bool_t exec(int nargs, const char **argv);
 void execSerial();
 
 };//Shell

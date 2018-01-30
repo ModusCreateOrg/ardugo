@@ -10,7 +10,7 @@
  *  Author: Don Anderson
  */
 
-static int
+static bool_t
 check_row(const char* arg){
   int row = strtol(arg, NULL, 10);
   if(row < 0){
@@ -24,7 +24,7 @@ check_row(const char* arg){
   return row;
 }
 
-static int
+static bool_t
 check_col(const char* arg){
   int col = strtol(arg, NULL, 10);
   if(col < 0){
@@ -132,14 +132,15 @@ Shell::execSerial(){
       int nread = Serial.readBytesUntil('\n', line, buf_size);
       line[nread > buf_size ? buf_size : nread] = 0;
       
-      if(exec(line) < 0)
-        Serial.println(F("ERROR"));
-      else
+      if(exec(line))
         Serial.println(F("OK"));
+      else
+        Serial.println(F("ERROR"));
+
   }
 }
 
-int  
+bool_t  
 Shell::exec(char* line){
 
   static const int NARGS = 5;
@@ -158,12 +159,13 @@ Shell::exec(char* line){
   return exec(nargs, argv);
 }
 
-void
+static bool_t
 what(){
   Serial.println(F("What?"));
+  return F;
 }
 
-int 
+bool_t 
 Shell::exec(int nargs, const char **argv){
   if(nargs){
     switch(argv[0][0]){
@@ -174,7 +176,7 @@ Shell::exec(int nargs, const char **argv){
         else if(!strcmp(argv[0], "dump-board"))
           board.dump();
         else
-          what();
+          return what();
         break;
 
       case 'p':
@@ -187,21 +189,21 @@ Shell::exec(int nargs, const char **argv){
         else if(!strcmp(argv[0], "place-stone"))
           place_stone(nargs, argv);
         else
-          what();
+          return what();
         break;
 
       case 'c':
         if(!strcmp(argv[0], "clear-board"))
           board.clear();
         else
-          what();
+          return what();
         break;
 
       case 's':
         if(!strcmp(argv[0], "set-cursor"))
           set_cursor(nargs, argv);
         else
-          what();
+          return what();
         break;
 
       case 'b':
@@ -218,18 +220,18 @@ Shell::exec(int nargs, const char **argv){
         else if(!strcmp(argv[0], "button-b"))
           injectButton(B_BUTTON);
         else
-          what();
+          return what();
         break;
 
       case 'g':
         if(!strcmp(argv[0], "get-mem"))
           get_mem(nargs, argv);
         else
-          what();
+          return what();
         break;
 
       default:
-          what();
+          return what();
         break;
     }
 
