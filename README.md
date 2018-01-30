@@ -21,7 +21,7 @@ ArduGo contains an optional command shell for developers and external automated 
 The interpreter polls one command-line on each iteration of the event loop. Events injected using the shell will activate in a different event loop. Multiple physical buttons may activate in one event loop, so the behavior is different.
 
 #### Arguments
-Since the board has nine columns and rows, their argument values below range from 0 to 8. The address for the *mem* command is a 16-bit hexadecimal value with no leading '0x'. The second argument to the *mem* command is optional and causes the memory to render as the type. If the integer types *(i,l)* are uppercase, they will render in hexadecimal.
+Since the board has nine columns and rows, their argument values below range from 0 to 8. The address for the **mem** command is a 16-bit hexadecimal value with no leading **0x**. The second argument to the **mem**command is optional and causes the memory to render as the type. If the integer types **(i,l)** are uppercase, they will render in hexadecimal.
 
 #### Commands
 The interpreter evaluates these commands:
@@ -31,16 +31,16 @@ The interpreter evaluates these commands:
 * board
 * dmp-vars
 * vars
-* stone *row* *column* *(b|w)*
+* stone *row column (b|w)*
 * clear
-* cursor *row* *column*
+* cursor *row column*
 * up
 * down
 * left
 * right
 * a
 * b
-* mem *address* *[(i|l|f|d)]**
+* mem *address [(i|l|f|d)]*
 
 # Development
 The current release build uses 44% of the flash and 53% of the ram. There should be enough resources remaining to implement play heuristics that are engaging for beginning players.
