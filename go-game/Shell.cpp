@@ -10,44 +10,15 @@
  *  Author: Don Anderson
  */
 
-PROGMEM const char* const STR_what = "What? ";
-PROGMEM const char* const STR_ToFewArgs = "Too few args were supplied";
-PROGMEM const char* const STR_PointNotEmpty = "The point is not empty";
-PROGMEM const char* const STR_InvalidColor = "The stone color is invalid";
-
-static void
-what(const char* msg){
-  Serial.print(STR_what);
-  Serial.println(msg);
-}
-
-static void
-what(const char* msg1, const char* msg2){
-  Serial.print(STR_what);
-  Serial.print(msg1);
-  Serial.println(msg2);
-}
-
-static void
-what(const char* msg1, const char* msg2, const char* msg3){
-  Serial.print(STR_what);
-  Serial.print(msg1);
-  Serial.print(msg2);
-  Serial.println(msg3);
-}
-
-PROGMEM const char* const STR_RowBounds = "The row value must be 0-8";
-PROGMEM const char* const STR_ColBounds = "The column value must be 0-8";
-
 static int
 check_row(const char* arg){
   int row = strtol(arg, NULL, 10);
   if(row < 0){
-    what(STR_RowBounds, arg);
+    Serial.println(F("The row must be greater than 0."));
     return -1;
   }
   if(row >= board.size){
-    what(STR_RowBounds, arg);
+    Serial.println(F("The row must be less than 9."));
     return -1;
   }
   return row;
@@ -57,11 +28,11 @@ static int
 check_col(const char* arg){
   int col = strtol(arg, NULL, 10);
   if(col < 0){
-    what(STR_ColBounds, arg);
+    Serial.println(F("The column must be greater than 0."));
     return -1;
   }
   if(col >= board.size){
-    what(STR_ColBounds, arg);
+    Serial.println(F("The column must be less than 9."));
     return -1;
   }
   return col;
@@ -71,7 +42,7 @@ static void
 set_cursor(int nargs, const char** argv){
   
   if(nargs < 3){
-    what("Too few args, needs 2!");
+    Serial.println(F("There must at least 2 args"));
     return;
   }
 
@@ -87,7 +58,7 @@ static void
 place_stone(int nargs, const char** argv){
   
   if(nargs < 4){
-    what(STR_ToFewArgs);
+    Serial.println(F("There must at least 3 args"));
     return;
   }
 
@@ -101,10 +72,10 @@ place_stone(int nargs, const char** argv){
       if(toupper(argv[3][0]) == 'B')
         board.placeStone(row, col, board.BLACK_STONE);
       else
-        what(STR_InvalidColor, argv[3]);
+        Serial.println(F("The stone color is invalid."));
     }
     else
-      what(STR_PointNotEmpty, argv[1], argv[2]);
+        Serial.println(F("The point is not empty."));
   }
 }
 
@@ -112,30 +83,30 @@ static void
 get_mem(int nargs, const char** argv){
   
   if(nargs < 2){
-    what(STR_ToFewArgs);
+    Serial.println(F("There must at least 1 arg"));
     return;
   }
 
   long addr = strtol(argv[1], NULL, 16);
   char typ = nargs > 2 ? argv[2][0] : 'i';
 
-  Serial.print("Addr 0x");
+  Serial.print(F("Addr 0x"));
   Serial.print(addr, HEX);
-  Serial.print(" = ");
+  Serial.print(F(" = "));
 
   switch(typ){
     case 'i':
       Serial.print(*((int*)addr));
       break;
     case 'I':
-      Serial.print("0x");
+      Serial.print(F("0x"));
       Serial.print(*((int*)addr), HEX);
       break;
     case 'l':
       Serial.print(*((long*)addr));
       break;
     case 'L':
-      Serial.print("0x");
+      Serial.print(F("0x"));
       Serial.print(*((long*)addr), HEX);
       break;
     case 'f':
@@ -151,9 +122,6 @@ get_mem(int nargs, const char** argv){
   return 0;
 }
 
-PROGMEM const char* const STR_OK    = "OK";
-PROGMEM const char* const STR_ERROR = "ERROR";
-
 void  
 Shell::execSerial(){
 
@@ -165,48 +133,35 @@ Shell::execSerial(){
       line[nread > buf_size ? buf_size : nread] = 0;
       
       if(exec(line) < 0)
-        Serial.println(STR_ERROR);
+        Serial.println(F("ERROR"));
       else
-        Serial.println(STR_OK);
+        Serial.println(F("OK"));
   }
 }
-
-PROGMEM const char* const STR_Delim = " \t\n\r";
 
 int  
 Shell::exec(char* line){
 
-  static const int NARGS = 5; 
+  static const int NARGS = 5;
+  const char* delim = " \t\n\r";
+ 
   int nargs = 0;
   const char *argv[NARGS];
 
-  char *tok = strtok(line, STR_Delim);
+  char *tok = strtok(line, delim);
 
   while (tok && nargs < NARGS) {
     argv[nargs++] = tok;
-    tok = strtok(NULL, STR_Delim);
+    tok = strtok(NULL, delim);
   }
 
   return exec(nargs, argv);
 }
 
-PROGMEM const char* const STR_Exit        = "exit";
-PROGMEM const char* const STR_PrintSys    = "print-sys";
-PROGMEM const char* const STR_DumpVars    = "dump-vars";
-PROGMEM const char* const STR_DumpBoard   = "dump-board";
-PROGMEM const char* const STR_PrintVars   = "print-vars";
-PROGMEM const char* const STR_PrintBoard  = "print-board";
-PROGMEM const char* const STR_PlaceStone  = "place-stone";
-PROGMEM const char* const STR_ClearBoard  = "clear-board";
-PROGMEM const char* const STR_SetCursor   = "set-cursor";
-PROGMEM const char* const STR_GetMem      = "get-mem";
-
-PROGMEM const char* const STR_ButtonU    = "button-up";
-PROGMEM const char* const STR_ButtonD    = "button-down";
-PROGMEM const char* const STR_ButtonL    = "button-left";
-PROGMEM const char* const STR_ButtonR    = "button-right";
-PROGMEM const char* const STR_ButtonA    = "button-a";
-PROGMEM const char* const STR_ButtonB    = "button-b";
+void
+what(){
+  Serial.println(F("What?"));
+}
 
 int 
 Shell::exec(int nargs, const char **argv){
@@ -214,74 +169,74 @@ Shell::exec(int nargs, const char **argv){
     switch(argv[0][0]){
 
       case 'd':
-        if(!strcmp(argv[0], STR_DumpVars))
+        if(!strcmp(argv[0], "dump-vars"))
           dump_vars();
-        else if(!strcmp(argv[0], STR_DumpBoard))
+        else if(!strcmp(argv[0], "dump-board"))
           board.dump();
         else
-          what(argv[0]);
+          what();
         break;
 
       case 'p':
-        if(!strcmp(argv[0], STR_PrintVars))
+        if(!strcmp(argv[0], "print-vars"))
           print_vars();
-        if(!strcmp(argv[0], STR_PrintSys))
+        if(!strcmp(argv[0], "print-sys"))
           print_sys();
-        else if(!strcmp(argv[0], STR_PrintVars))
+        else if(!strcmp(argv[0], "print-board"))
           board.print();
-        else if(!strcmp(argv[0], STR_PlaceStone))
+        else if(!strcmp(argv[0], "place-stone"))
           place_stone(nargs, argv);
         else
-          what(argv[0]);
+          what();
         break;
 
       case 'c':
-        if(!strcmp(argv[0], STR_ClearBoard))
+        if(!strcmp(argv[0], "clear-board"))
           board.clear();
         else
-          what(argv[0]);
+          what();
         break;
 
       case 's':
-        if(!strcmp(argv[0], STR_SetCursor))
+        if(!strcmp(argv[0], "set-cursor"))
           set_cursor(nargs, argv);
         else
-          what(argv[0]);
+          what();
         break;
 
       case 'e':
-        if(!strcmp(argv[0], STR_Exit))
+        if(!strcmp(argv[0], "exit"))
           exit_shell = T;
         else
-          what(argv[0]);
+          what();
         break;
 
       case 'b':
-        if(!strcmp(argv[0], STR_ButtonU))
+        if(!strcmp(argv[0], "button-up"))
           injectButton(UP_BUTTON);
-        else if(!strcmp(argv[0], STR_ButtonD))
+        else if(!strcmp(argv[0], "button-down"))
           injectButton(DOWN_BUTTON);
-        else if(!strcmp(argv[0], STR_ButtonL))
+        else if(!strcmp(argv[0], "button-left"))
           injectButton(LEFT_BUTTON);
-        else if(!strcmp(argv[0], STR_ButtonR))
+        else if(!strcmp(argv[0], "button-right"))
           injectButton(RIGHT_BUTTON);
-        else if(!strcmp(argv[0], STR_ButtonA))
+        else if(!strcmp(argv[0], "button-a"))
           injectButton(A_BUTTON);
-        else if(!strcmp(argv[0], STR_ButtonB))
+        else if(!strcmp(argv[0], "button-b"))
           injectButton(B_BUTTON);
         else
-          what(argv[0]);
+          what();
         break;
 
       case 'g':
-        if(!strcmp(argv[0], STR_GetMem))
+        if(!strcmp(argv[0], "get-mem"))
           get_mem(nargs, argv);
         else
-          what(argv[0]);
+          what();
         break;
 
       default:
-        what(argv[0]);
+          what();
         break;
     }
 
