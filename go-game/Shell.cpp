@@ -165,49 +165,49 @@ Shell::exec(int nargs, const char **argv){
     Serial.println(F("What?"));
     return F;
   }else{
-    if(!strcmp(argv[0], "dump-vars"))
+    if(!strcmp(argv[0], "dmp-vars"))
       dump_vars();
 
-    else if(!strcmp(argv[0], "dump-board"))
+    else if(!strcmp(argv[0], "dmp-brd"))
       board.dump();
 
-    else if(!strcmp(argv[0], "print-vars"))
+    else if(!strcmp(argv[0], "vars"))
       print_vars();
 
-    else if(!strcmp(argv[0], "print-sys"))
+    else if(!strcmp(argv[0], "system"))
       print_sys();
 
-    else if(!strcmp(argv[0], "print-board"))
+    else if(!strcmp(argv[0], "board"))
       board.print();
 
-    else if(!strcmp(argv[0], "place-stone"))
+    else if(!strcmp(argv[0], "stone"))
       place_stone(nargs, argv);
 
-    else if(!strcmp(argv[0], "clear-board"))
+    else if(!strcmp(argv[0], "clear"))
       board.clear();
 
-    else if(!strcmp(argv[0], "set-cursor"))
+    else if(!strcmp(argv[0], "cursor"))
       set_cursor(nargs, argv);
 
-    else if(!strcmp(argv[0], "button-up"))
+    else if(!strcmp(argv[0], "up"))
       injectButton(UP_BUTTON);
 
-    else if(!strcmp(argv[0], "button-down"))
+    else if(!strcmp(argv[0], "down"))
       injectButton(DOWN_BUTTON);
 
-    else if(!strcmp(argv[0], "button-left"))
+    else if(!strcmp(argv[0], "left"))
       injectButton(LEFT_BUTTON);
 
-    else if(!strcmp(argv[0], "button-right"))
+    else if(!strcmp(argv[0], "right"))
       injectButton(RIGHT_BUTTON);
 
-    else if(!strcmp(argv[0], "button-a"))
+    else if(!strcmp(argv[0][0], "a"))
       injectButton(A_BUTTON);
 
-    else if(!strcmp(argv[0], "button-b"))
+    else if(!strcmp(argv[0], "b"))
       injectButton(B_BUTTON);
 
-    else if(!strcmp(argv[0], "get-mem"))
+    else if(!strcmp(argv[0], "mem"))
       get_mem(nargs, argv);
 
     else{
