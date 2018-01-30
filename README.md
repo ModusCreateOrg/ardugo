@@ -1,5 +1,5 @@
 # Modus ArduGo
-Inspired by [EVADE](https://moduscreate.com/blog/announcing-evade-our-first-arduboy-game/), ArduGo implements a 9x9 Go board with some simple rules. It is designed to be forked and create custom games that use a goban.
+Inspired by [EVADE](https://moduscreate.com/blog/announcing-evade-our-first-arduboy-game/), ArduGo implements a Go board with some simple game rules. It is designed to be forked and create custom games that use a goban.
 
 The board has nine columns and rows, which is the right size for learning to play Go, and for fitting into the Arduino's limited resources.
 
