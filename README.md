@@ -1,4 +1,4 @@
-    # Modus ArduGo
+# Modus ArduGo
 Inspired by [EVADE](https://moduscreate.com/blog/announcing-evade-our-first-arduboy-game/), ArduGo implements a board for playing the game of Go. It is designed to run on the Arduboy game console.
 
 The board has nine columns and rows, which is the right size for learning to play Go, and for fitting into the Arduino's limited resources.
@@ -12,6 +12,7 @@ For each player, two scores update on the game display. The one to the right of 
 Pressing the "B" button restarts the game.
 
 ![Modus ArduGo](https://raw.githubusercontent.com/ModusCreateOrg/go-arduboy-game/master/images/web/ModusCreat-ArduGo-1-MODUS-article-featured.jpg "Modus ArduGo")
+
 
 # Technical
 ArduGo contains an optional command shell for developers and external automated testing. The project includes an automated test suite, written in Python, primarily for testing the game rules and heuristics. 
