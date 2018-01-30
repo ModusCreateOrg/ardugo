@@ -29,12 +29,11 @@ Since the board has nine columns and rows, their argument values below range fro
 #### Commands
 The interpreter evaluates these commands:
 
-* exit
-* prnt-sys
-* dump-board
-* prnt-board
-* dump-vars
-* prnt-vars
+* system
+* dup-brd
+* board
+* dup-vars
+* vars
 * stone row column (b|w)
 * clear
 * cursor row column
